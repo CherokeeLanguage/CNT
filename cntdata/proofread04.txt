@@ -1,0 +1,21 @@
+040105 GREVIOUS ERROR - PNG IMAGE WRONG
+040120 punctuation
+040301 22x
+040328 317
+040601 capitalization
+040602 3xx
+040633 punctuation
+040641 353
+040653 411
+040725 everything, maybe 'mu'
+040726 123
+041034 151
+041038 no period
+041151 412
+041155 43x, 44x
+041203 152 unusual punctuation
+041426 modified
+042002 capitalization typo 331
+042111 21x possible missing character
+042111 412 MU ?!?!?!?!
+041824 is a-tsi-llv-ge-lo-hi hyphenated
