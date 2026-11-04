@@ -39,3 +39,26 @@ plan:
       - {class: internal inconsistency, classification: finding}
       - {class: factual error, classification: finding}
     outcome: revised in place; re-validation round 2 dispatched
+  - round: 2
+    date: 2026-11-04
+    artifact: .issues/1/plan/plan.md
+    reviewer: fresh-context dispatch (general sub-agent, no prior context)
+    verdict: PASS
+    findings: []
+    adjudicated_classes: []
+    remediation: none required
+    outcome: plan validated; implement may consume it
+implementation:
+  - round: 1
+    date: 2026-11-04
+    artifact: AGENTS.md (deliverable, feature branch feature/CNT-1-agents-md-and-hygiene)
+    reviewer: fresh-context dispatch (general sub-agent, no prior context)
+    verdict: FAIL
+    findings:
+      - sc: SC-1
+        class: factual defect (unverified claim)
+        ground: AGENTS.md claimed the nested .opencode/ deck has "its own tests and CI"; no CI exists in the nested repository (.github/ holds only ISSUE_TEMPLATE, no workflow files anywhere outside attic/node_modules) — the claim had no verified backing
+        remediation: claim corrected to "its own tests and git hooks" (both verified: tests/, tests-v2/, hooks/pre-commit, hooks/pre-push); fix committed on the feature branch
+    adjudicated_classes:
+      - {class: factual defect, classification: finding}
+    outcome: remediated; fresh re-review round 2 dispatched
