@@ -1,0 +1,12 @@
+# Validation record — CNT#1
+# One file per issue; one section per artifact under validation.
+spec:
+  - round: 1
+    date: 2026-11-04
+    artifact: .issues/1/spec.md
+    reviewer: fresh-context dispatch (general sub-agent, no prior context)
+    verdict: PASS
+    findings: []
+    adjudicated_classes: []
+    remediation: none required
+    outcome: spec approved for pipeline continuation under terminal authorization

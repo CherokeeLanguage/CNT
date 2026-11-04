@@ -43,6 +43,7 @@ No other surface is touched: no changes inside `.opencode/` (separate repository
 | SC-7 | The untracked `.DS_Store` files still exist on disk | structural | `test -f .DS_Store && test -f cntdata/.DS_Store` |
 | SC-8 | The PR diff contains exactly the scoped surfaces and nothing else | structural | `git show --stat` on the squashed commit lists exactly: `AGENTS.md`, `.gitignore`, `.DS_Store` (deletion), `cntdata/.DS_Store` (deletion) |
 | SC-9 | One feature branch → one open PR against `master`; no merge performed by the agent | structural | `gh pr view` shows the open PR; `git log origin/master` shows no agent-made merge |
+| SC-10 | The committed `.gitignore` contains every pattern R3 names | structural | for each of the eight entries in R3's list, `git show HEAD:.gitignore` contains a matching line |
 
 ## Out of scope
 
@@ -68,6 +69,6 @@ No other surface is touched: no changes inside `.opencode/` (separate repository
 | "implement for PR" | R5 |
 | "also remediate things like .DS_Store etc that should be in the gitignore by default" | R3 (ignore set), R4 (untrack) |
 
-Root-cause coverage: defect 1 → SC-1/SC-2/SC-3; defect 2 → SC-4 (and SC-5, SC-8 carry the expansion); defect 3 → SC-5/SC-6/SC-7. Every stated cause is covered; no orphan criteria.
+Root-cause coverage: defect 1 → SC-1/SC-2/SC-3; defect 2 → SC-4 (and SC-5, SC-8, SC-10 carry the expansion); defect 3 → SC-5/SC-6/SC-7. Every stated cause is covered; no orphan criteria.
 
 🤖 Co-authored with AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)
