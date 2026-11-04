@@ -1,6 +1,6 @@
 title: Spec — commit the served-tree manifest + deployment mapping (the /cnt deployment
   artifact of record)
-status: open
+status: closed
 labels:
 - needs-approval
 - spec
@@ -35,33 +35,36 @@ body: "<!-- SPDX-FileCopyrightText: 2026 Michael Conrad -->\n<!-- SPDX-License-I
   \ served universe\n  (8,264 PNGs + 28 top-level HTMLs + 260 chapter HTMLs + `website.tar.gz`).\n\
   - **R2** — Each manifest line's name maps to its repo path by the documented\n \
   \ rule, and the manifest is generated from the repo's tracked bytes only —\n  never\
-  \ from the server: `BBCCVV.png` → `cnt/BBCCVV.png`;\n  `BB_.png` (book-header\n  images, 23 files);\n  `BB.html` (01–27) and `index.html`\
-  \ → `cnt/<name>`;\n  `BBCC.html` (chapter pages) → `cntdata/BBCC.html`;\n  `website.tar.gz`\
-  \ → `cntdata/website.tar.gz`.\n- **R3** — The mapping rule and the manifest's role\
-  \ as the deployment\n  artifact of record are documented in `docs/` (one short page),\
-  \ so the\n  consuming deployment's provenance record can cite repo paths, not analysis\n\
-  \  chat.\n- **R4** — A verification script (committed, e.g. `tools/verify-served-tree.sh`)\n\
-  \  executes the check against a fresh checkout: it verifies every manifest\n  entry\
-  \ against the repo file at its mapped path (for `website.tar.gz`, the\n  check runs\
-  \ against the tarball AND its extracted members' md5s, extracted\n  to a temp dir)\
-  \ and exits non-zero on any mismatch or absence.\n- **R5** — The work lands on a\
-  \ feature branch as PR(s) against `master` per\n  the deck's git-workflow cards;\
-  \ the agent performs no merge.\n\n## Success criteria\n\n| ID | Criterion | Class\
-  \ | Instrument |\n|---|---|---|---|\n| SC-1 | `tools/verify-served-tree.sh` over\
-  \ a fresh clone of `master` prints 8,553/8,553 matched and exits 0 | structural\
-  \ | executed script output |\n| SC-2 | The manifest carries exactly 8,553 lines;\
-  \ every name matches the mapping rule; `docs/` page states the mapping and the artifact-of-record\
-  \ role | structural | line count + scripted name-rule audit |\n| SC-3 | One open\
-  \ PR against `master`; no agent merge | structural | `gh pr view` |\n\n## Out of\
-  \ scope\n\n- Any data-file content change (the manifest describes tracked bytes;\
-  \ it\n  changes none).\n- Any deployment, container, or routing work — devops#29's\
-  \ repo and scope.\n- Any server access — ced1 is not touched; the manifest's authority\
-  \ derives\n  from CNT#3's delivered and re-verified sync.\n- Regenerating or re-bundling\
-  \ `website.tar.gz`.\n\n## Traceability\n\nThe requirement source is the consuming\
-  \ deployment's verification need\n(devops#29 SC-1/SC-3 instruments) plus the observed\
-  \ fact that the served\ntree's flat layout and repo mapping exist only in analysis\
-  \ records. Every\nrequirement traces to making that verification self-contained\
-  \ in this repo.\n\n\U0001F916 Co-authored with AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)\n"
+  \ from the server: `BBCCVV.png` → `cnt/BBCCVV.png`;\n  `BB_.png` (book-header\n\
+  \  images, 23 files);\n  `BB.html` (01–27) and `index.html` → `cnt/<name>`;\n  `BBCC.html`\
+  \ (chapter pages) → `cntdata/BBCC.html`;\n  `website.tar.gz` → `cntdata/website.tar.gz`.\n\
+  - **R3** — The mapping rule and the manifest's role as the deployment\n  artifact\
+  \ of record are documented in `docs/` (one short page), so the\n  consuming deployment's\
+  \ provenance record can cite repo paths, not analysis\n  chat.\n- **R4** — A verification\
+  \ script (committed, e.g. `tools/verify-served-tree.sh`)\n  executes the check against\
+  \ a fresh checkout: it verifies every manifest\n  entry against the repo file at\
+  \ its mapped path (for `website.tar.gz`, the\n  check runs against the tarball AND\
+  \ its extracted members' md5s, extracted\n  to a temp dir) and exits non-zero on\
+  \ any mismatch or absence.\n- **R5** — The work lands on a feature branch as PR(s)\
+  \ against `master` per\n  the deck's git-workflow cards; the agent performs no merge.\n\
+  \n## Success criteria\n\n| ID | Criterion | Class | Instrument |\n|---|---|---|---|\n\
+  | SC-1 | `tools/verify-served-tree.sh` over a fresh clone of `master` prints 8,553/8,553\
+  \ matched and exits 0 | structural | executed script output |\n| SC-2 | The manifest\
+  \ carries exactly 8,553 lines; every name matches the mapping rule; `docs/` page\
+  \ states the mapping and the artifact-of-record role | structural | line count +\
+  \ scripted name-rule audit |\n| SC-3 | One open PR against `master`; no agent merge\
+  \ | structural | `gh pr view` |\n\n## Out of scope\n\n- Any data-file content change\
+  \ (the manifest describes tracked bytes; it\n  changes none).\n- Any deployment,\
+  \ container, or routing work — devops#29's repo and scope.\n- Any server access\
+  \ — ced1 is not touched; the manifest's authority derives\n  from CNT#3's delivered\
+  \ and re-verified sync.\n- Regenerating or re-bundling `website.tar.gz`.\n\n## Traceability\n\
+  \nThe requirement source is the consuming deployment's verification need\n(devops#29\
+  \ SC-1/SC-3 instruments) plus the observed fact that the served\ntree's flat layout\
+  \ and repo mapping exist only in analysis records. Every\nrequirement traces to\
+  \ making that verification self-contained in this repo.\n\n\U0001F916 Co-authored\
+  \ with AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)\n"
 created_at: '2026-11-04T21:04:07+00:00'
-updated_at: '2026-11-04T21:04:31+00:00'
+updated_at: '2026-11-04T21:46:28+00:00'
 github_url: https://github.com/CherokeeLanguage/CNT/issues/9
+closed_at: '2026-11-04T21:46:28+00:00'
+close_reason: completed
