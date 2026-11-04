@@ -1,0 +1,10 @@
+title: Create root AGENTS.md and repo-hygiene remediation (gitignore defaults, untrack
+  .DS_Store)
+status: open
+labels:
+- needs-approval
+- documentation
+- enhancement
+body: ''
+created_at: '2026-11-04T19:03:08+00:00'
+updated_at: '2026-11-04T19:03:08+00:00'
