@@ -1,0 +1,70 @@
+(YAML)
+# Research card — CNT deployment divergence: repo vs vhost-175.cherokeedictionary.net
+# Question: does the deployed CNT at vhost-175 carry direct updates not tracked in this repo?
+# Answer: YES — but the divergence is entirely mechanical normalization plus one added scan;
+# zero verse-text/content edits anywhere. Verified 2026-11-04.
+
+question: >
+  Does the deployed CNT (Cherokee New Testament Online) at
+  vhost-175.cherokeedictionary.net hold direct updates not tracked in this
+  repo, and if so, exactly what?
+answer: >
+  Confirmed divergence, fully characterized. The deployed tree
+  (/opt/tomcat/webapps/cnt on host ced1, served at https://vhost-175.cherokeedictionary.net/cnt/)
+  differs from this repo in exactly three ways: (1) all 260 chapter pages
+  cntdata/BBCC.html were syllabary-normalized on the server — the repo copies
+  carry 18,158 Private-Use-Area codepoints (U+E3A0..U+E3F4, a uniform +0xD000
+  shift of the Cherokee block U+13A0..U+13F4) mixed with true Unicode, while
+  every server copy is pure Unicode Cherokee with zero PUA; (2) the same 260
+  server files have the blank line after each verse row removed (repo has it);
+  (3) one file is server-only: 100406.png (Ephesians 4:6 scan, 8156 bytes) —
+  present on the server and in the migration bundle, absent from the repo,
+  while the repo does hold that verse's text data (cntdata/100406.txt/.eng).
+  After applying the inverse remap (PUA->Cherokee) and blank-line stripping to
+  the repo copies, all 260 files are byte-identical to the server copies —
+  SequenceMatcher reports zero remaining non-equal opcodes. The other 8,291
+  common files (8,263 verse/cover PNGs + 27 book pages + cnt/index.html) are
+  md5-identical. No verse text, chapter structure, or book page was edited.
+confidence: 0.95
+sources:
+  - SSH mconrad@vhost-175.cherokeedictionary.net (host ced1), read-only:
+    /opt/tomcat/webapps/cnt full md5 inventory (8,553 files) and
+    /home/cdrchops/cnt staging copy (byte-identical to webapp, 0 diffs)
+  - HTTPS probes: https://vhost-175.cherokeedictionary.net/cnt/ (uniform
+    Last-Modified 2019-08-22 03:12:28 GMT)
+  - Local: repo md5s, codepoint-level diff of all 260 cntdata/*.html,
+    cntdata/cnt_data.tar.gz member inspection
+timeline:
+  - '2011-06-09: cntdata/cnt_data.tar.gz created (owner legg/legg) — the
+    original Timothy Legg data archive: 16,208 entries (txt/eng/260 PUA-mangled
+    html + working files), no PNGs. Byte-identical to the repo working tree.'
+  - '2019-08-21 22:12:28 -0500: deployed webapp dir assembled as one unit —
+    every file stamped identically, dir mtime unchanged since (no additions or
+    in-place edits after that moment). website.tar.gz (69,559,190 bytes) left
+    in the webapp dir contains exactly the deployed tree, already normalized,
+    including 100406.png.'
+  - '2020-04-01: repo "posterity initial checkin" (5243dee) seeded from the
+    2011-era legg tarball + a PNG set matching the pre-migration site
+    (lacks 100406.png) — the normalization passed it by.'
+deployment_facts:
+  webapp_tree: /opt/tomcat/webapps/cnt (8,553 files; cdrchops:tomcat; r-xr-xr-x)
+  staging_tree: /home/cdrchops/cnt (byte-identical to webapp; root-owned 444)
+  app: Grails ROOT.war under Tomcat (/opt/tomcat, port 8081) behind nginx;
+    nginx serves /cnt/ from the standalone cnt webapp
+  untouched_since: 2019-08-21 22:12:28 -0500 (uniform mtimes + dir mtime)
+  no_git_tracking: no .git anywhere under /home (maxdepth 3) tracks the CNT
+    data — the direct updates are untracked on the server too
+repo_side_facts:
+  - repo txt/eng (7,989 + 7,937) are served nowhere on the vhost — they exist
+    only in the legg archive/repo; not comparable against the server
+  - repo aux file cntdata/output.txt carries 18,543 PUA chars (same mangling)
+  - .DS_Store junk at repo root and cntdata/ (already covered by CNT#1 scope)
+gaps:
+  - Whether 100406.png predates the Aug 2019 migration or was added by it is
+    not distinguishable from the server alone (uniform stamp); it is inside
+    website.tar.gz, so it shipped with the migration bundle at the latest.
+  - The normalization tool/actor and exact date are not recorded anywhere
+    found (no scripts inside website.tar.gz; no git history on the server);
+    the normalized state existed by 2019-08-21.
+  - The dictionary app's own surfaces (MariaDB corpus/reading data, ROOT.war
+    assets) were not audited — the question covered the CNT web section.
