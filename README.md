@@ -5,6 +5,19 @@ printed edition paired with verse-level transcriptions and their English
 source lines. There is nothing to build or run here — the repository is a
 dataset.
 
+## Provenance
+
+This data descends from the **Cherokee New Testament Online** project,
+initiated by **Timothy Legg** in 2006: the printed edition was digitized on a
+flatbed scanner and the full New Testament transcribed by hand over about
+three years, with two complete proofreading passes. The project ran
+2006–2019; this repository was seeded from Legg's own 2011 data archive
+(`cntdata/cnt_data.tar.gz`). See [docs/LEGG.md](docs/LEGG.md) for the full
+acknowledgment of his work. The original site (cherokeenewtestament.org) is
+no longer reachable; the project content is preserved in the
+[CherokeeNewTestament.org repository](https://github.com/CherokeeLanguage/CherokeeNewTestament.org)
+and mirrored at [cherokeedictionary.net/cnt/](https://cherokeedictionary.net/cnt/).
+
 ## Repository layout
 
 | Path | Contents |
