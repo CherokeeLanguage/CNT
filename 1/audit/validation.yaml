@@ -62,3 +62,12 @@ implementation:
     adjudicated_classes:
       - {class: factual defect, classification: finding}
     outcome: remediated; fresh re-review round 2 dispatched
+  - round: 2
+    date: 2026-11-04
+    artifact: AGENTS.md (deliverable, feature branch feature/CNT-1-agents-md-and-hygiene)
+    reviewer: fresh-context dispatch (general sub-agent, no prior context)
+    verdict: PASS
+    findings: []
+    adjudicated_classes: []
+    remediation: none required
+    outcome: zero-finding verdict across SC-1..SC-10; deliverable is PR-ready
