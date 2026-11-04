@@ -13,3 +13,13 @@ third_dispatch:
   date: 2026-11-04
   verdict: PASS
   note: zero findings
+final_verify:
+  date: 2026-11-04
+  rounds:
+    - verdict: FAIL
+      finding: SC-3 — invented book.txt example pair (order reversed, @01#01#01 absent)
+      remediation: corrected section to observed @-then-# same-verse pairing, real example lines, first-line anomaly noted (bac9b2a8)
+    - verdict: PASS (one wording defect)
+      finding: SC-3/R-2 — garbled README book-header sentence
+      remediation: fixed sentence (0e2645a5)
+  final: PASS — zero findings after remediation
