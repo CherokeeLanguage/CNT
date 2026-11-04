@@ -1,0 +1,15 @@
+CNT#5 implementation verification — 2026-11-04, branch feature/CNT-5-readme-and-docs
+SC-1: test -f README.md -> PASS (exists, covers R-1 layout table, R-2 naming key + surface map, R-3 html note + aux caveat)
+SC-2: test -f docs/DATA.md -> PASS (exists, covers R-4 per-type detail)
+SC-3 claim inventory (each claim verified against repo):
+  dirs cnt cntdata .issues .opencode -> PASS
+  counts: txt=7989 eng=7937 png=8264 book-headers=27 book-header .eng=0 html=260 aux=10 -> matches both docs
+  books 01..27 present -> matches "01-27 = Matthew-Revelation"
+  010101.txt quote -> exact match (diff clean)
+  010101.eng quote -> exact match (diff clean)
+  010000.txt quote -> exact match (diff clean)
+  no .eng book-header form (0 files matching cntdata/*0000.eng) -> matches both docs
+  cntdata/0101.html references src="010000.png" (bare filename); PNG present at cnt/010000.png, absent from cntdata/ -> matches both docs
+  html <title>Cherokee New Testament Online</title> -> matches DATA.md
+  book.txt record format: @BB#CC#VV#english followed by #cherokee-of-same-verse; first line lacks leading @ (noted in DATA.md) -> matches DATA.md
+  all 10 named aux files present -> matches both docs
