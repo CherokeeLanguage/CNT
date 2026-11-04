@@ -1,0 +1,9 @@
+first_dispatch:
+  date: 2026-11-04
+  verdict: FAIL
+  findings:
+    - self-containment: validation-record section inside spec body (pre-recorded PASS verdict; process content) — remediated by deleting the section; verdicts belong in this file
+    - incapable-instrument: SC-3 fixed sample could not verify the universal criterion — remediated by making the instrument an exhaustive claim-inventory check
+revalidation:
+  date: 2026-11-04
+  verdict: PENDING
