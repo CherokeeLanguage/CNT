@@ -1,6 +1,6 @@
 title: Sync repo to the published /cnt live state on vhost-175 before switch-over
   to vhost-58
-status: open
+status: closed
 labels:
 - needs-approval
 body: ''
