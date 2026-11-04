@@ -1,0 +1,56 @@
+# Research card — Timothy Legg and Cherokee New Testament Online provenance
+date: 2026-11-04
+confidence: high (0.95 core; living-status unresolved by design)
+question: Who is Tim Leggett and what was his role in the Cherokee New Testament digitization?
+
+## Core findings
+
+- **Name**: "Timothy Legg" ("Tim Legg") — the "Leggett" spelling appears in
+  no source; it is a corruption. Sources: cherokeedictionary.net/cnt/,
+  ../CherokeeNewTestament.org content front matter, 2015 PDF copyright page,
+  CrossWire SWORD module page.
+- **Role**: initiator (2006), digitizer (flatbed scan of the printed American
+  Bible Society Cherokee NT), transcriber of the entire New Testament by hand
+  in vi on Ubuntu Linux over ~3 years, two full proofreading passes, site
+  author/webmaster (pages bylined "by Timothy Legg"; site "Online since
+  9/13/2006").
+- **Narrative provenance (local, authoritative)**:
+  `../CherokeeNewTestament.org/content/cherokee-new-testament/index.md` —
+  first-person project history: book from Ryan Mackey (Kenwood, OK); the late
+  George Pumpkin suggested comparing texts; English per-line text from the
+  University of Virginia; audio attempt with Louise Lacey and Betty
+  Sixkiller; November 2014 PDF e-book by Michael Conrad; $5/verse bounty.
+  Page front matter authors = ["Timothy Legg", "Michael Conrad"].
+- **2015 print/PDF edition credit** (todaysnative.org/wp-content/uploads/2019/01/cnts.pdf,
+  verified by text extraction): "Copyright 2015, Timothy Legg, Michael
+  Joyner"; "Timothy Legg - Data entry and proofing. / Michael Joyner -
+  Typesetting." ISBN 978-1-312-94393-3, CC0 1.0.
+- **Independent third-party attributions**: CrossWire SWORD module Che1860
+  (crosswire.org/sword/modules/ModInfo.jsp?modName=Che1860) and
+  bible-discovery.com/bible-license-che1860 credit cherokeenewtestament.org
+  as the electronic-text producer.
+- **Repo lineage**: this repo's seed (`posterity initial checkin`,
+  2020-04-01) is Legg's 2011 data archive (`cntdata/cnt_data.tar.gz`, owner
+  legg/legg) — the `cntdata/` verse files descend directly from his
+  transcription/proofing.
+- **Site status**: cherokeenewtestament.org currently unreachable (HTTP 522);
+  live successor mirror at cherokeedictionary.net/cnt/; the local
+  `../CherokeeNewTestament.org` checkout (same CherokeeLanguage org) carries
+  the authoritative content per developer instruction.
+- **Living status**: unresolvable from public sources (common name; no
+  memorial or posthumous language found anywhere). Honor text must avoid
+  asserting living or deceased; use present-perfect phrasing about the work.
+
+## Gaps
+
+- Birth/death dates, middle name, biography beyond the project narrative.
+- Whether the cherokeedictionary.net narrative is Legg's original text or a
+  reproduction (well-supported as his account; not formally signed).
+
+## Citable sources
+
+- ../CherokeeNewTestament.org/content/cherokee-new-testament/index.md (local)
+- https://cherokeedictionary.net/cnt/
+- https://todaysnative.org/wp-content/uploads/2019/01/cnts.pdf (2015 PDF)
+- https://crosswire.org/sword/modules/ModInfo.jsp?modName=Che1860
+- https://web.archive.org/web/20130328084251/http://www.cherokeenewtestament.org:80/
