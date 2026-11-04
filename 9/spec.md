@@ -47,6 +47,7 @@ build can prove what it bakes without any access to the old host.
 - **R2** — Each manifest line's name maps to its repo path by the documented
   rule, and the manifest is generated from the repo's tracked bytes only —
   never from the server: `BBCCVV.png` → `cnt/BBCCVV.png`;
+  `BB_.png` (book-header images, 23 files) → `cnt/BB_.png`;
   `BB.html` (01–27) and `index.html` → `cnt/<name>`;
   `BBCC.html` (chapter pages) → `cntdata/BBCC.html`;
   `website.tar.gz` → `cntdata/website.tar.gz`.

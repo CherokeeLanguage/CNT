@@ -35,7 +35,7 @@ body: "<!-- SPDX-FileCopyrightText: 2026 Michael Conrad -->\n<!-- SPDX-License-I
   \ served universe\n  (8,264 PNGs + 28 top-level HTMLs + 260 chapter HTMLs + `website.tar.gz`).\n\
   - **R2** — Each manifest line's name maps to its repo path by the documented\n \
   \ rule, and the manifest is generated from the repo's tracked bytes only —\n  never\
-  \ from the server: `BBCCVV.png` → `cnt/BBCCVV.png`;\n  `BB.html` (01–27) and `index.html`\
+  \ from the server: `BBCCVV.png` → `cnt/BBCCVV.png`;\n  `BB_.png` (book-header\n  images, 23 files);\n  `BB.html` (01–27) and `index.html`\
   \ → `cnt/<name>`;\n  `BBCC.html` (chapter pages) → `cntdata/BBCC.html`;\n  `website.tar.gz`\
   \ → `cntdata/website.tar.gz`.\n- **R3** — The mapping rule and the manifest's role\
   \ as the deployment\n  artifact of record are documented in `docs/` (one short page),\
