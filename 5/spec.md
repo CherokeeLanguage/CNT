@@ -16,8 +16,9 @@ Developer request: "setup a proper README and other docs."
 
 ## Scope
 
-Two additive documentation files at trunk root level. No data files are
-modified, no existing file is reorganized.
+Two additive documentation files: `README.md` at the trunk root and
+`docs/DATA.md` in a new `docs/` directory. No data files are modified, no
+existing file is reorganized.
 
 | Surface | Change |
 |---|---|

@@ -4,6 +4,12 @@ first_dispatch:
   findings:
     - self-containment: validation-record section inside spec body (pre-recorded PASS verdict; process content) — remediated by deleting the section; verdicts belong in this file
     - incapable-instrument: SC-3 fixed sample could not verify the universal criterion — remediated by making the instrument an exhaustive claim-inventory check
-revalidation:
+second_dispatch:
   date: 2026-11-04
-  verdict: PENDING
+  verdict: FAIL
+  findings:
+    - internal-contradiction: scope prose said both files at "trunk root level" while the table placed DATA.md in docs/ — remediated by restating placement
+third_dispatch:
+  date: 2026-11-04
+  verdict: PASS
+  note: zero findings
