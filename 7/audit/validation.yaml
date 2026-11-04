@@ -1,0 +1,9 @@
+first_dispatch:
+  date: 2026-11-04
+  verdict: FAIL
+  findings:
+    - fabricated-claim: R-5 stated a 2006-2019 project span absent from the research card — remediated by recording the Wikipedia-sourced project-span finding in the card (spec unchanged)
+second_dispatch:
+  date: 2026-11-04
+  verdict: PASS
+  note: zero findings

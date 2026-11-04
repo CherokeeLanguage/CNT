@@ -1,0 +1,11 @@
+CNT#7 implementation verification — 2026-11-04, branch feature/CNT-7-legg-acknowledgment
+SC-1: test -f docs/LEGG.md -> PASS. Claims source-checked against .issues/research-cards/timothy-legg-cnt-provenance.yaml:
+  name "Timothy Legg", 2006 initiation, flatbed scan, vi/Ubuntu ~3-year transcription, two proofreading passes,
+  2006-2019 span (Wikipedia), 2011 seed archive (cntdata/cnt_data.tar.gz present in repo), 2015 credit line
+  "Timothy Legg - Data entry and proofing" + ISBN 978-1-312-94393-3 (todaysnative PDF), CrossWire SWORD Che1860,
+  narrative people (Mackey/Pumpkin/Lacey/Sixkiller/Conrad/UVA) verified against
+  ../CherokeeNewTestament.org/content/cherokee-new-testament/index.md. All sources cited in-document.
+SC-2: grep 'leggett' over README.md + docs/LEGG.md -> zero hits; memorial/death phrasing patterns -> zero hits
+  (phrasing is present-perfect, no living/deceased assertion).
+SC-3: README.md provenance paragraph states Legg 2006-2019, cnt_data.tar.gz seed (verified present),
+  link to docs/LEGG.md, site-down note with local-repo + mirror references (no claim the live site is up). All PASS.

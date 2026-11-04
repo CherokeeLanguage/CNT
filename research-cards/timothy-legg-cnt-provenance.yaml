@@ -33,6 +33,11 @@ question: Who is Tim Leggett and what was his role in the Cherokee New Testament
   2020-04-01) is Legg's 2011 data archive (`cntdata/cnt_data.tar.gz`, owner
   legg/legg) — the `cntdata/` verse files descend directly from his
   transcription/proofing.
+- **Project span**: Wikipedia (Bible translations into Cherokee, rev
+  1378014995, fetched 2026-11-04, confidence 0.9) states "Between 2006 and
+  2019, Timothy Legg led a project to compare the English and Cherokee
+  translations of the New Testament" and "In 2019, Legg abandoned that
+  website and a copy was published to another site."
 - **Site status**: cherokeenewtestament.org currently unreachable (HTTP 522);
   live successor mirror at cherokeedictionary.net/cnt/; the local
   `../CherokeeNewTestament.org` checkout (same CherokeeLanguage org) carries
