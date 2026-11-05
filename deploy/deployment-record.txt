@@ -1,0 +1,14 @@
+
+## deployment 2026-11-05T04:39:25Z
+
+- image tag: cnt-web:ea8458a16d215ea2823c30ed608f89cf8a733de9
+- CNT content commit: ea8458a16d215ea2823c30ed608f89cf8a733de9
+- image content identity: sha256:81f384a5d0cec1f429f1a08683e421558a846bd7862efd375fea50e67834772a
+- deploy mode: first deploy (slot staged + route activated through the update window)
+
+## deployment 2026-11-05T04:40:23Z
+
+- image tag: cnt-web:ef45e643c26f0fa9bd84c6e43372ac22a30213f9
+- CNT content commit: ef45e643c26f0fa9bd84c6e43372ac22a30213f9
+- image content identity: sha256:f934ce213f93114326960934e40dc7eaf0a30671eabeb4c03478266bb3837859
+- deploy mode: redeploy (slot image line repointed, routing untouched)
