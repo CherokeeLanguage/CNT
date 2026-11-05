@@ -46,10 +46,14 @@ rides #29's update window after the service is up.
   tagged with a scratch-only reference (`cnt-web-red:<commit>` — a namespace the committed
   definition never uses, so the tag is independently inspectable); it succeeds and lands the
   tag, which the spec forbids; the scratch tag is removed from the host after the RED capture.
-- **GREEN:** Item 1's gate in place, execute the divergent build again — same tampered scratch
-  context, now through the committed `deploy/Dockerfile` — and capture the non-zero build and
-  the absence of the tag (`docker image inspect cnt-web-red:<commit>` fails; no new tag of any
-  name exists from the divergent run).
+- **GREEN:** Item 1's gate in place, execute the divergent build again — the tampered scratch
+  context now assembled to carry everything the committed definition consumes (the tampered
+  `cntdata/website.tar.gz`, the manifest, `deploy/verify-bake.sh`, `deploy/Caddyfile`) — through
+  the committed `deploy/Dockerfile`. Capture: the build's non-zero exit with the gate's own
+  comparison output reporting the mismatch (not a COPY/stage error — the discriminator against
+  any other build failure), a pre/post `docker images` diff showing no new tag of any name, and
+  the legitimate `cnt-web:<commit>` image ID unchanged (a gate-less divergent run would have
+  clobbered it).
 - **Instrument:** executed divergent-build capture (non-zero exit; `docker image inspect` on the
   tag fails) under `.issues/11/research/`.
 
