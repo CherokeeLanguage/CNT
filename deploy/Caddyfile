@@ -1,0 +1,15 @@
+:80 {
+	# the baked served tree — the full 8,553-file universe of
+	# cntdata/served-tree-manifest.md5: the website.tar.gz members extracted
+	# flat at the root plus the tarball itself at the root.
+	#
+	# The edge proxy (devops#29's Caddyfile route) forwards /cnt/* with the
+	# path preserved, so the /cnt context prefix maps onto the tree root:
+	# strip it (handle_path) and serve flat. The legacy bare-segment 302 is
+	# pinned at the edge; the container mirrors it for direct internal hits.
+	handle_path /cnt/* {
+		root * /srv
+		file_server
+	}
+	redir /cnt /cnt/ 302
+}
