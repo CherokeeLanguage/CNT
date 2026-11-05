@@ -40,13 +40,13 @@ rides #29's update window after the service is up.
 ### Item 2 — the gate gates (SC-2)
 
 - **Deliverable:** none (verification item for Item 1's gate).
-- **RED:** a divergent-tree build produces a tag — run against the pre-gate state (executed
-  before Item 1's GREEN commit, when no gate exists in the build), a build over a tampered
-  tarball succeeds and lands `cnt-web:<tag>`, which the spec forbids. This RED execution is the
-  only part of Item 2 that runs before Item 1's GREEN.
-- **GREEN:** Item 1's gate in place, re-execute the same divergent build — a scratch build
-  context whose `website.tar.gz` carries one tampered member — and capture the non-zero build
-  and the absence of the tag.
+- **RED:** a divergent-tree build produces a tag — executed before Item 1's GREEN, using a
+  throwaway gate-less reference Dockerfile (scratch-only, never committed: extract + tag, no
+  verification) over a scratch build context whose `website.tar.gz` carries one tampered member;
+  it succeeds and lands `cnt-web:<tag>`, which the spec forbids.
+- **GREEN:** Item 1's gate in place, execute the divergent build again — same tampered scratch
+  context, now through the committed `deploy/Dockerfile` — and capture the non-zero build and
+  the absence of the tag.
 - **Instrument:** executed divergent-build capture (non-zero exit; `docker image inspect` on the
   tag fails) under `.issues/11/research/`.
 
