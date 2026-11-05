@@ -1,1 +1,27 @@
-comments: []
+comments:
+- type: internal
+  body: 'Post-merge cleanup (2026-11-05): PR #12 merged to master (merge commit 981512ef);
+    feature branch deleted. The deployed tag from the branch-time runs (cnt-web:ef45e643…)
+    pinned a pre-squash commit that became unreachable, so the tooling''s redeploy
+    path re-pinned provenance at the master tip:
+
+
+    ## deployment 2026-11-05T14:49:52Z
+
+
+    - image tag: cnt-web:981512ef54d8782e0311e4125ae4e552c347c4ae
+
+    - CNT content commit: 981512ef54d8782e0311e4125ae4e552c347c4ae (master tip)
+
+    - image content identity: sha256:f934ce213f93114326960934e40dc7eaf0a30671eabeb4c03478266bb3837859
+    (identical image — content unchanged)
+
+    - deploy mode: redeploy (slot image line repointed, routing untouched, no reload)
+
+
+    Post-redeploy probes: bare /cnt → 302 → /cnt/ → 200; /cnt/index.html serves manifest-exact
+    bytes (4d30619e2a268a3af1a3af9ca1c24a01). The full record is host-durable at /srv/cnt/deployment-record.txt.
+
+
+    🤖 Co-authored with AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)'
+  timestamp: '2026-11-05T14:50:08+00:00'
