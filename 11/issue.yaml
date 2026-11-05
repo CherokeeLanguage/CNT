@@ -1,0 +1,9 @@
+title: 'Spec — product self-deployment on the vhost-58 stack: image build + deploy
+  tooling (the /cnt static image)'
+status: open
+labels:
+- needs-approval
+- spec
+body: ''
+created_at: '2026-11-05T03:53:34+00:00'
+updated_at: '2026-11-05T03:53:34+00:00'
