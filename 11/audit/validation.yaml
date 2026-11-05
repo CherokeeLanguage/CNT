@@ -1,0 +1,18 @@
+# Validation record — CNT#11 (YAML)
+# Loop history per the spec card's validation standards §Loop (criteria set:
+# .opencode/skills/spec/references/validation-standards.md, applied verbatim
+# every round). The verdict itself is recorded once per the verify card's
+# recording rule (chat) — this file is the loop's history, never a second
+# copy of the verdict.
+
+spec:
+  - round: 1
+    date: "20261105040549"
+    artifact: .issues/11/spec.md
+    artifact_revision: "store commit 569bb807 (initial filing: product self-deployment on the vhost-58 stack — image build + deploy tooling, per developer direction 2026-11-04 separation of concerns; seam contract sourced from devops#29's separation-of-concerns dependency)"
+    reviewer: "fresh-context reviewer (general sub-agent), budget comparable to implementor; read artifacts and criteria reference directly"
+    findings: []
+    adjudicated_preferences: "none — zero-finding round; reviewer tested all eight defect classes and every analysis family, verified the manifest/tarball arithmetic (8,553 = 8,552 extracted + the tarball itself), the element-for-element seam-text correspondence with devops#29's separation-of-concerns bullet and R-8 two-leg gate, the caddy:2.11.7 pin and AQV host-build precedent in the devops runbooks, the docker/compose/buildx install facts, and CNT#3/#9's merged legs (PR #4/#10); the boundary-vs-repoint, R5 staging-frame, and R2 acquisition-frame judgment calls resolved inside the artifact"
+    structural_reevaluation: "none this round"
+    reviewer_disclosed_evidence_gaps: "none"
+    loop_state: "zero-finding terminal round — validation converged at the first round; the loop exits on the clean verdict before the approval gate"
