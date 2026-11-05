@@ -40,14 +40,15 @@ rides #29's update window after the service is up.
 ### Item 2 — the gate gates (SC-2)
 
 - **Deliverable:** none (verification item for Item 1's gate).
-- **RED:** none — this item is the proof the RED of Item 1's gate exists: a divergent tree must
-  fail before tagging.
-- **GREEN:** execute a divergent build — a scratch build context whose `website.tar.gz` carries one
-  tampered member — and capture the non-zero build and the absence of the tag.
+- **RED:** a divergent-tree build produces a tag — before Item 1's gate exists, a build over a
+  tampered tarball succeeds and lands `cnt-web:<tag>`, which the spec forbids.
+- **GREEN:** Item 1's gate in place, execute a divergent build — a scratch build context whose
+  `website.tar.gz` carries one tampered member — and capture the non-zero build and the absence
+  of the tag.
 - **Instrument:** executed divergent-build capture (non-zero exit; `docker image inspect` on the
   tag fails) under `.issues/11/research/`.
 
-### Item 3 — the deploy tooling (SC-3, SC-4)
+### Item 3 — the deploy tooling and its deployment record (SC-3, SC-4)
 
 - **Deliverable:** `deploy/deploy-cnt-web.sh` — runs on vhost-58 from a checkout at the pinned
   commit: (a) records the pinned commit; (b) builds the image (`cnt-web:<commit>`, image ID
@@ -56,33 +57,30 @@ rides #29's update window after the service is up.
   reference; `docker compose up -d` brings the service up; (d) redeploy: repoints only the image
   line in the staged `/srv/cnt/compose.yaml` and brings the service up; (e) first-deploy route
   activation: `docker exec caddy caddy validate` + dated reload through the update window (the
-  #29 ordering: after the service is up); redeploy reloads nothing; (f) prints the deployment
-  record — tag, full commit hash, image ID, date — as its final output.
+  #29 ordering: after the service is up); redeploy reloads nothing; (f) writes the deployment
+  record as a dedicated artifact (`deploy/deployment-record.txt` on the host run, captured into
+  `.issues/11/research/`): tag, full commit hash, image ID, date — one line per field.
 - **RED:** the script does not exist; `/srv/cnt/compose.yaml` absent; `/cnt/` unreachable.
 - **GREEN:** write and commit the script; execute it against the staged config on vhost-58.
 - **Instrument:** recorded deploy run (the script's own output capture) + probe capture:
   `https://dev.cherokeedictionary.net/cnt` → 302 → `/cnt/` → 200, and a sampled verse HTML + PNG
-  checksummed against the manifest — under `.issues/11/research/`.
+  checksummed against the manifest — under `.issues/11/research/`; the deployment record parse
+  (tag embeds the commit hash; image ID matches `docker image inspect`; date present) runs over
+  the record artifact the run produced.
 
-### Item 4 — the deployment record (SC-4)
+### Item 4 — evidence set completeness (SC-5)
 
-- **Deliverable:** the deployment record artifact — the deploy run's recorded output (tag ↔
-  commit hash, image ID, date) stored as a dated capture under `.issues/11/research/`.
-- **RED:** no record exists.
-- **GREEN:** store the capture produced by Item 3's execution.
-- **Instrument:** artifact parse of the record — the three fields present and mutually consistent
-  (tag embeds the commit hash; image ID matches `docker image inspect`).
+- **Deliverable:** the executed completeness check over the capture set: every instrument output
+  from Items 1–3 present and datemarked in `.issues/11/research/` (capture location and form per
+  the Conventions clause; SC-6's `gh pr view` output is Item 5's own and is out of this check's
+  scope). The verifiable act is the check itself; its result is recorded in the issue's
+  validation record.
+- **RED:** the folder does not exist (the check fails on first run).
+- **GREEN:** the captures from Items 1–3 are in place; the check passes.
+- **Instrument:** artifact existence + completeness parse (Items 1–3's outputs present and
+  datemarked; absence of any one is a failure).
 
-### Item 5 — evidence set completeness (SC-5)
-
-- **Deliverable:** the dated capture set under `.issues/11/research/` covering every instrument
-  output from Items 1–4, in the probe-SOP family form.
-- **RED:** the folder does not exist.
-- **GREEN:** the captures from Items 1–4 land there, header-complete.
-- **Instrument:** artifact existence + completeness parse (every SC's instrument output present
-  and datemarked).
-
-### Item 6 — the PR (SC-6)
+### Item 5 — the PR (SC-6)
 
 - **Deliverable:** one open PR against `master` from `feature/CNT-11-self-deploy-tooling`,
   carrying the squashed work commit; no agent merge.
