@@ -40,11 +40,13 @@ rides #29's update window after the service is up.
 ### Item 2 — the gate gates (SC-2)
 
 - **Deliverable:** none (verification item for Item 1's gate).
-- **RED:** a divergent-tree build produces a tag — before Item 1's gate exists, a build over a
-  tampered tarball succeeds and lands `cnt-web:<tag>`, which the spec forbids.
-- **GREEN:** Item 1's gate in place, execute a divergent build — a scratch build context whose
-  `website.tar.gz` carries one tampered member — and capture the non-zero build and the absence
-  of the tag.
+- **RED:** a divergent-tree build produces a tag — run against the pre-gate state (executed
+  before Item 1's GREEN commit, when no gate exists in the build), a build over a tampered
+  tarball succeeds and lands `cnt-web:<tag>`, which the spec forbids. This RED execution is the
+  only part of Item 2 that runs before Item 1's GREEN.
+- **GREEN:** Item 1's gate in place, re-execute the same divergent build — a scratch build
+  context whose `website.tar.gz` carries one tampered member — and capture the non-zero build
+  and the absence of the tag.
 - **Instrument:** executed divergent-build capture (non-zero exit; `docker image inspect` on the
   tag fails) under `.issues/11/research/`.
 
@@ -75,8 +77,12 @@ rides #29's update window after the service is up.
   the Conventions clause; SC-6's `gh pr view` output is Item 5's own and is out of this check's
   scope). The verifiable act is the check itself; its result is recorded in the issue's
   validation record.
-- **RED:** the folder does not exist (the check fails on first run).
-- **GREEN:** the captures from Items 1–3 are in place; the check passes.
+- **RED:** the check run with a deliberately incomplete expectation — the check's expected-capture
+  manifest is authored first and names a capture entry that does not yet exist (the Item 5 PR
+  evidence, which is out of scope by design), so the first execution fails on that named entry,
+  demonstrating the check can fail.
+- **GREEN:** the check executes over Items 1–3's in-place captures (in the repo checkout the
+  store worktree provides), all present and datemarked; the check passes.
 - **Instrument:** artifact existence + completeness parse (Items 1–3's outputs present and
   datemarked; absence of any one is a failure).
 
