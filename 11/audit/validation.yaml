@@ -16,3 +16,21 @@ spec:
     structural_reevaluation: "none this round"
     reviewer_disclosed_evidence_gaps: "none"
     loop_state: "zero-finding terminal round — validation converged at the first round; the loop exits on the clean verdict before the approval gate"
+
+implementation:
+  - round: 1
+    date: "20261105142614"
+    artifact: "feature/CNT-11-self-deploy-tooling (deliverables: deploy/Dockerfile, deploy/Caddyfile, deploy/verify-bake.sh, deploy/deploy-cnt-web.sh, deploy/deployment-record.txt)"
+    reviewer: "fresh-context reviewer (general sub-agent), budget comparable to implementor; read spec/SCs, the full diff, and the executed captures directly"
+    findings: []
+    adjudicated_preferences: "none — zero-finding round; reviewer verified the in-build gate ordering (bake-stage RUN before the final stage), the SC-2 discriminator (gate's own MISMATCH/FATAL output, pre/post docker images diff, image-ID-unchanged), the live edge probes (302/200 + manifest-exact sampled checksums), the deployment record fields, and the externally documented surfaces (caddy 2.11.7 Caddyfile syntax, POSIX sh, bash shebang consistency)"
+    structural_reevaluation: "none this round"
+    reviewer_disclosed_evidence_gaps: "none"
+    loop_state: "zero-finding terminal round — implementation verification converged at the first round; verdict recorded once in chat per the verify card"
+plan_validation:
+  - round: 1
+    date: "20261105140000"
+    artifact: .issues/11/plan.md
+    reviewer: "fresh-context reviewer (general sub-agent) against .opencode/skills/plan/references/plan-validation-standards.md"
+    findings: "rounds 1-5 FAIL (item RED defects, item-set inconsistency, record duplication, convention restatement, scratch-tag/instrument discriminators); remediated in place each round"
+    loop_state: "converged — round 5 PASS with zero findings"
