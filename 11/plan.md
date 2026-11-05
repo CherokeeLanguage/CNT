@@ -42,11 +42,14 @@ rides #29's update window after the service is up.
 - **Deliverable:** none (verification item for Item 1's gate).
 - **RED:** a divergent-tree build produces a tag — executed before Item 1's GREEN, using a
   throwaway gate-less reference Dockerfile (scratch-only, never committed: extract + tag, no
-  verification) over a scratch build context whose `website.tar.gz` carries one tampered member;
-  it succeeds and lands `cnt-web:<tag>`, which the spec forbids.
+  verification) over a scratch build context whose `website.tar.gz` carries one tampered member,
+  tagged with a scratch-only reference (`cnt-web-red:<commit>` — a namespace the committed
+  definition never uses, so the tag is independently inspectable); it succeeds and lands the
+  tag, which the spec forbids; the scratch tag is removed from the host after the RED capture.
 - **GREEN:** Item 1's gate in place, execute the divergent build again — same tampered scratch
   context, now through the committed `deploy/Dockerfile` — and capture the non-zero build and
-  the absence of the tag.
+  the absence of the tag (`docker image inspect cnt-web-red:<commit>` fails; no new tag of any
+  name exists from the divergent run).
 - **Instrument:** executed divergent-build capture (non-zero exit; `docker image inspect` on the
   tag fails) under `.issues/11/research/`.
 
@@ -79,10 +82,10 @@ rides #29's update window after the service is up.
   validation record.
 - **RED:** the check run with a deliberately incomplete expectation — the check's expected-capture
   manifest is authored first and names a capture entry that does not yet exist (the Item 5 PR
-  evidence, which is out of scope by design), so the first execution fails on that named entry,
-  demonstrating the check can fail.
-- **GREEN:** the check executes over Items 1–3's in-place captures (in the repo checkout the
-  store worktree provides), all present and datemarked; the check passes.
+  evidence), so the first execution fails on that named entry, demonstrating the check can fail.
+- **GREEN:** the injected out-of-scope entry is removed from the expectation after the RED
+  capture (the manifest then names exactly the Items 1–3 captures), and the check executes over
+  those in-place captures — all present and datemarked; the check passes.
 - **Instrument:** artifact existence + completeness parse (Items 1–3's outputs present and
   datemarked; absence of any one is a failure).
 
