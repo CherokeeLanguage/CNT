@@ -16,25 +16,26 @@ body: "<!--\nSPDX-FileCopyrightText: 2026 Michael Conrad\nSPDX-License-Identifie
   \ repo, and the deployed image all\nlack the files). Twenty pages currently render\
   \ broken images to every visitor.\n\n## Facts (verified this pass)\n\nCaptures for\
   \ every check below sit under `.issues/14/research/` (dated\n2026-11-07).\n\n- **The\
-  \ defect set (exhaustive audit):** every quoted `.png` reference across\n  all 260\
-  \ served chapter pages (`cntdata/*.html`, byte-identical to the\n  tarball members\
-  \ and to the post-#15 `cnt/` copies) checked against the\n  served-tree image source\
-  \ — 8,737 distinct references found; exactly 8 files\n  are referenced but missing;\
-  \ 23 broken references across 20 pages:\n  - `07_.png` ← all sixteen 1 Corinthians\
-  \ chapter pages (`0701`–`0716`)\n  - `180100.png`, `18_.png` ← `1801` (Philemon\
-  \ 1)\n  - `240100.png`, `24_.png` ← `2401` (2 John 1)\n  - `250100.png`, `25_.png`\
-  \ ← `2501` (3 John 1)\n  - `260100.png` ← `2601` (Jude 1; its `26_.png` exists)\n\
-  - **Live confirmation:** the 8 names return 404 on\n  `cherokeedictionary.net/cnt/`;\
-  \ sibling controls (`190100.png`, `19_.png`,\n  `26_.png`, `27_.png`, `270100.png`)\
-  \ return 200. File presence at the\n  referenced path therefore predicts live serving\
-  \ exactly on this tree —\n  which grounds the structural instruments below.\n- **The\
-  \ originating report's referrer table is corrected:** its four\n  single-chapter\
-  \ rows pair each missing file with the *next* book's page\n  (`1901`, `2501`, `2601`,\
-  \ `2701`); the audited pages and the live-served\n  pages reference their *own*\
-  \ book's names (`1801`, `2401`, `2501`, `2601`),\n  and `07_.png` has sixteen referrers,\
-  \ not two. The defect set itself — the\n  8 missing files — is exactly as reported.\n\
-  - **Naming structure:** each chapter page references `BB0000.png` (book-title\n\
-  \  scan — all exist), `BBCC00.png` (chapter-heading scan — exists for every\n  multi-chapter\
+  \ defect set (exhaustive audit):** every quoted `.png` reference across\n  all 288\
+  \ served HTML pages — the 260 chapter pages plus the 28 book-level\n  pages (`cntdata/*.html`\
+  \ byte-identical to the tarball members and to the\n  post-#15 `cnt/` copies) —\
+  \ checked against the served-tree image source —\n  8,737 page-unique references\
+  \ found; exactly 8 files are referenced but\n  missing; 23 broken references across\
+  \ 20 pages:\n  - `07_.png` ← all sixteen 1 Corinthians chapter pages (`0701`–`0716`)\n\
+  \  - `180100.png`, `18_.png` ← `1801` (Philemon 1)\n  - `240100.png`, `24_.png`\
+  \ ← `2401` (2 John 1)\n  - `250100.png`, `25_.png` ← `2501` (3 John 1)\n  - `260100.png`\
+  \ ← `2601` (Jude 1; its `26_.png` exists)\n- **Live confirmation:** the 8 names\
+  \ return 404 on\n  `cherokeedictionary.net/cnt/`; sibling controls (`190100.png`,\
+  \ `19_.png`,\n  `26_.png`, `27_.png`, `270100.png`) return 200. File presence at\
+  \ the\n  referenced path therefore predicts live serving exactly on this tree —\n\
+  \  which grounds the structural instruments below.\n- **The originating report's\
+  \ referrer table is corrected:** its four\n  single-chapter rows pair each missing\
+  \ file with the *next* book's page\n  (`1901`, `2501`, `2601`, `2701`); the audited\
+  \ pages and the live-served\n  pages reference their *own* book's names (`1801`,\
+  \ `2401`, `2501`, `2601`),\n  and `07_.png` has sixteen referrers, not two. The\
+  \ defect set itself — the\n  8 missing files — is exactly as reported.\n- **Naming\
+  \ structure:** each chapter page references `BB0000.png` (book-title\n  scan — all\
+  \ exist), `BBCC00.png` (chapter-heading scan — exists for every\n  multi-chapter\
   \ book, e.g. `190100.png` 385×105; missing for exactly the four\n  single-chapter\
   \ books), the `BBCCVV.png` verse scans, and an `NN_.png`\n  book-thumbnail strip\
   \ at the page bottom (exists for most books; missing for\n  books 07, 18, 24, 25).\n\
@@ -81,49 +82,78 @@ body: "<!--\nSPDX-FileCopyrightText: 2026 Michael Conrad\nSPDX-License-Identifie
   \ — with the surfaces\n  reconciled after the change; edits to chapter pages SHALL\
   \ be confined to\n  the image references (no other content change).\n- **R4** —\
   \ If the served-tree file universe changes (files added or removed),\n  CNT#9's\
-  \ served-tree manifest SHALL be regenerated to match, and\n  `tools/verify-served-tree.sh`\
-  \ over the post-work tree SHALL report\n  0 missing / 0 orphans.\n- **R5** — A reference-integrity\
-  \ instrument SHALL be committed in the repo's\n  `tools/` family: it enumerates\
-  \ every `.png` reference in the served chapter\n  pages and reports each referenced-but-missing\
-  \ file with its referrer pages;\n  its output is the reconciliation basis for SC-2.\n\
-  - **R6** — The work lands on a feature branch as PR(s) against `master`; the\n \
-  \ agent performs no merge.\n- **R7** — The resolved state SHALL reach the live `/cnt`\
-  \ tree: a redeploy\n  through CNT#11's deploy tooling at a new pinned content commit,\
-  \ riding the\n  existing loop with no routing change.\n- **Constraint (the report's\
-  \ CNT#13 coordination point):** if the diglot\n  pipeline later regenerates the\
-  \ chapter pages, the disposition record and the\n  instrument are the regeneration's\
-  \ reconciliation inputs — both must be\n  readable without this ticket's context.\n\
-  \n## Success criteria\n\n| ID | Criterion | Class | Instrument |\n|---|---|---|---|\n\
-  | SC-1 | The disposition record exists, is committed, and covers all 8 files / 23\
-  \ references / 20 pages of the 2026-11-07 audit, each reference carrying exactly\
-  \ one outcome (restore / correct / accept) and a reason | structural | artifact\
-  \ parse of the record against the audit enumeration captured under `.issues/14/research/`\
-  \ |\n| SC-2 | The committed instrument (R5) executed over the post-work served tree\
-  \ flags exactly the accept-dispositioned references and nothing else — every restore/correct\
-  \ disposition shows resolved | structural | executed instrument output reconciled\
-  \ 1:1 against the disposition record |\n| SC-3 | The surfaces are reconciled post-work:\
-  \ every touched chapter page is identical across `cntdata/`, `cnt/`, and the extracted\
-  \ tarball members, and the two tarball copies remain byte-identical to each other\
-  \ | structural | executed byte-diff of the touched files across surfaces + md5 comparison\
-  \ of the two tarballs |\n| SC-4 | The manifest gate holds post-work: `tools/verify-served-tree.sh`\
-  \ over the post-work tree reports 0 missing / 0 orphans against the manifest (regenerated\
-  \ per R4 if the universe changed) | structural | executed script capture |\n| SC-5\
-  \ | Dated captures of this work's executed evidence (audit, instrument runs, surface\
-  \ reconciliation, deploy probe) sit under `.issues/14/research/` in the standing\
-  \ probe-SOP family form (executing account in each capture header, marker-labeled\
-  \ sections) | structural | artifact existence + completeness parse |\n| SC-6 | One\
-  \ open PR against `master`; no agent merge | structural | `gh pr view` |\n| SC-7\
-  \ | Post-redeploy, the live `/cnt` tree reflects the dispositions: restored/corrected\
-  \ references return 200 and accept-dispositioned references return 404, exactly\
-  \ as the disposition record states | behavioral | live HTTP probe capture of the\
-  \ affected reference paths, compared against the record |\n\n## Approach\n\n- **The\
-  \ instrument** joins the repo's existing tools family (beside\n  `tools/verify-served-tree.sh`):\
+  \ served-tree manifest SHALL be regenerated to match, and the\n  reconciliation\
+  \ SHALL be evidenced in both directions by\n  `tools/verify-served-tree.sh` over\
+  \ the post-work tree: the script's existing\n  manifest→tree check SHALL report\
+  \ 0 missing, and a tree→manifest orphan sweep\n  added to it SHALL report 0 orphans\
+  \ — the extension is additive, leaving the\n  script's existing output and gate\
+  \ behavior unchanged. The universe's stated\n  counts SHALL agree with the reconciled\
+  \ manifest wherever they are recorded\n  as fact: `docs/SERVED-TREE.md` and the\
+  \ `deploy/Dockerfile` bake-stage\n  comment both state the universe size and its\
+  \ composition, and SHALL be\n  updated to the reconciled counts when the universe\
+  \ changes.\n- **R5** — A reference-integrity instrument SHALL be committed in the\
+  \ repo's\n  `tools/` family: it enumerates every `.png` reference in the served\
+  \ tree's\n  HTML pages and reports each referenced-but-missing file with its referrer\n\
+  \  pages; its output is the reconciliation basis for SC-2.\n- **R6** — The work\
+  \ lands on a feature branch as PR(s) against `master`; the\n  agent performs no\
+  \ merge.\n- **R7** — The resolved state SHALL reach the live `/cnt` tree: a redeploy\n\
+  \  through CNT#11's deploy tooling at a new pinned content commit, riding the\n\
+  \  existing loop with no routing change.\n- **Constraint (the report's CNT#13 coordination\
+  \ point):** if the diglot\n  pipeline later regenerates the chapter pages, the disposition\
+  \ record and the\n  instrument are the regeneration's reconciliation inputs — both\
+  \ must be\n  readable without this ticket's context.\n\n## Success criteria\n\n\
+  | ID | Criterion | Class | Instrument |\n|---|---|---|---|\n| SC-1 | The disposition\
+  \ record exists, is committed, and covers all 8 files / 23 references / 20 pages\
+  \ of the 2026-11-07 audit, each reference carrying exactly one outcome (restore\
+  \ / correct / accept) and a reason | structural | artifact parse of the record against\
+  \ the audit enumeration captured under `.issues/14/research/` |\n| SC-2 | The committed\
+  \ instrument (R5) executed over the post-work served tree flags exactly the accept-dispositioned\
+  \ references and nothing else — every restore/correct disposition shows resolved\
+  \ | structural | executed instrument output reconciled 1:1 against the disposition\
+  \ record |\n| SC-3 | The surfaces are reconciled post-work: every touched chapter\
+  \ page is identical across `cntdata/`, `cnt/`, and the extracted tarball members,\
+  \ and the two tarball copies remain byte-identical to each other | structural |\
+  \ executed byte-diff of the touched files across surfaces + md5 comparison of the\
+  \ two tarballs |\n| SC-4 | The manifest gate holds post-work in both directions:\
+  \ `tools/verify-served-tree.sh` — with its additive tree→manifest orphan sweep —\
+  \ executed over the post-work tree reports 0 missing (manifest→tree) and 0 orphans\
+  \ (tree→manifest) against the manifest regenerated per R4 | structural | executed\
+  \ script capture showing both direction lines |\n| SC-5 | Dated captures of this\
+  \ work's executed evidence (audit, instrument runs, surface reconciliation, deploy\
+  \ probe) sit under `.issues/14/research/` in the standing probe-SOP family form\
+  \ (executing account in each capture header, marker-labeled sections) | structural\
+  \ | artifact existence + completeness parse |\n| SC-6 | One open PR against `master`;\
+  \ no agent merge | structural | `gh pr view` |\n| SC-7 | Post-redeploy, the live\
+  \ `/cnt` tree reflects the dispositions per outcome: restored/replaced references\
+  \ are present in the served affected pages and return 200; dropped references are\
+  \ absent from the served affected pages; accepted references remain present and\
+  \ return 404 | behavioral | live capture — per-affected-page fetch (its served reference\
+  \ set) plus per-affected-path HTTP status, compared 1:1 against the disposition\
+  \ record |\n| SC-8 | Every chapter page the work edits carries a pre-work→post-work\
+  \ delta confined to the image references the disposition touches — no other byte\
+  \ of the page changes in any surface it lives in | structural | executed per-page\
+  \ pre/post comparison (base-commit blob vs post-work file, per touched surface)\
+  \ with deltas shown reference-confined, captured under `.issues/14/research/` |\n\
+  | SC-9 | When the universe changed, the universe's stated counts agree with the\
+  \ reconciled manifest: `docs/SERVED-TREE.md` and the `deploy/Dockerfile` bake-stage\
+  \ comment carry the reconciled size and composition (when the universe did not change,\
+  \ they already agree and the criterion is satisfied unchanged) | structural | artifact\
+  \ parse of the two stated-count surfaces against the manifest census |\n\n## Approach\n\
+  \n- **The instrument** joins the repo's existing tools family (beside\n  `tools/verify-served-tree.sh`):\
   \ a POSIX-shell script enumerating `.png`\n  `src=`/`href=` references from the\
   \ served chapter pages and checking each\n  against the served-tree root, printing\
   \ `missing-file -> referrer pages`\n  lines. It reports; the disposition record\
-  \ carries the decisions.\n- **Per-reference disposition** is decided at implementation\
-  \ from the\n  recorded outcomes, with the investigation paths the report names:\
-  \ the four\n  `NN_` strips have a candidate source (the CherokeeNewTestament.org\n\
+  \ carries the decisions.\n- **The orphan sweep** extends the delivered gate script\n\
+  \  (`tools/verify-served-tree.sh`) additively: a tree→manifest enumeration\n  beside\
+  \ its existing manifest→tree check, so the manifest reconciliation R4\n  requires\
+  \ is evidenced by the script itself in both directions; the existing\n  output stays\
+  \ byte-compatible. The in-build gate is a separate script\n  (`deploy/verify-bake.sh`,\
+  \ manifest→baked-tree, COPY'd in by the\n  `deploy/Dockerfile` build) — it gains\
+  \ no orphan direction from this change\n  and keeps passing because the manifest\
+  \ and the tarball are regenerated\n  together; the pre-build both-direction check\
+  \ is what evidences the\n  reconciliation.\n- **Per-reference disposition** is decided\
+  \ at implementation from the\n  recorded outcomes, with the investigation paths\
+  \ the report names: the four\n  `NN_` strips have a candidate source (the CherokeeNewTestament.org\n\
   \  co-located copies — equivalence verified before adoption, since dimensions\n\
   \  differ from CNT's existing `NN_` siblings); the four single-chapter\n  `BBCC00`\
   \ scans exist nowhere, so restore means regeneration from the source\n  scans or\
@@ -137,16 +167,18 @@ body: "<!--\nSPDX-FileCopyrightText: 2026 Michael Conrad\nSPDX-License-Identifie
   broken images), every inbound link to them, the dictionary suite's\ndead-reference\
   \ sweep family (the cherokeedictionary#136 disposition surface),\nand any future\
   \ diglot page regeneration (the disposition record as its\nreconciliation input).\
-  \ Blast radius: repo content files (HTML, PNG, tarball,\nmanifest) plus one redeploy\
-  \ through the delivered tooling — no code paths, no\ndevops-repo surfaces, no routing\
-  \ change. Rollback: revert the content commit\nand redeploy the prior pinned tag\
-  \ through the same tooling.\n\n## Out of scope\n\n- The CherokeeNewTestament.org\
-  \ Zola repository's identical four `BBCC00`\n  defects — separate repository, separate\
-  \ issue store (single-repo scope\n  rule); recorded in Facts as a sibling observation\
-  \ for the developer's\n  disposition.\n- CNT-diglot pipeline changes or wholesale\
-  \ page regeneration in this ticket.\n- Editorial content work on the pages (text\
-  \ corrections are not this defect).\n- The legacy ced1 host's state — devops' retirement\
-  \ surface, not this repo's.\n- Host-side or devops-repo changes (cherokeelanguage-devops#29's\
+  \ Blast radius: repo content files (HTML, PNG, tarball,\nmanifest) and the universe's\
+  \ stated-count documentation\n(`docs/SERVED-TREE.md`, the `deploy/Dockerfile` bake-stage\
+  \ comment) when\nrestores change the universe, plus one redeploy through the delivered\
+  \ tooling\n— no code paths, no devops-repo surfaces, no routing change. Rollback:\
+  \ revert\nthe content commit and redeploy the prior pinned tag through the same\
+  \ tooling.\n\n## Out of scope\n\n- The CherokeeNewTestament.org Zola repository's\
+  \ identical four `BBCC00`\n  defects — separate repository, separate issue store\
+  \ (single-repo scope\n  rule); recorded in Facts as a sibling observation for the\
+  \ developer's\n  disposition.\n- CNT-diglot pipeline changes or wholesale page regeneration\
+  \ in this ticket.\n- Editorial content work on the pages (text corrections are not\
+  \ this defect).\n- The legacy ced1 host's state — devops' retirement surface, not\
+  \ this repo's.\n- Host-side or devops-repo changes (cherokeelanguage-devops#29's\
   \ scope).\n\n## Traceability\n\nThe requirement source is the developer's report\
   \ (this record's\npre-conversion body, 2026-11-06): \"Disposition each of the 8\
   \ references:\nregenerate/scan the missing image, or correct the page's reference\n\
@@ -155,13 +187,17 @@ body: "<!--\nSPDX-FileCopyrightText: 2026 Michael Conrad\nSPDX-License-Identifie
   \ and this session's verification — the 2026-11-07 exhaustive audit\n(8 files /\
   \ 23 references / 20 pages) and the live spot-check, both captured\nunder `.issues/14/research/`.\
   \ R1/R2 implement the disposition requirement\nverbatim; R3/R4 are the fix's reconciliation\
-  \ obligations toward the served\ntree and CNT#9's delivered gate; R5 commits the\
-  \ audit that found the defect\nas the standing instrument; R7 closes the loop to\
-  \ the surface the failure was\nobserved on; R6 is the deck's PR boundary.\n\n> Full\
+  \ obligations toward the served\ntree and CNT#9's delivered gate — R4's tree→manifest\
+  \ sweep added to the gate\nscript so the manifest reconciliation is evidenced rather\
+  \ than asserted and\nthe universe's stated counts kept agreeing (SC-9), and R3's\
+  \ confinement clause\noperationalized by SC-8's pre/post comparison so the archive's\
+  \ page content is\npreserved, not merely propagated consistently; R5\ncommits the\
+  \ audit that found the defect as the standing instrument; R7 closes\nthe loop to\
+  \ the surface the failure was observed on; R6 is the deck's PR\nboundary.\n\n> Full\
   \ spec and plan artifacts: https://github.com/CherokeeLanguage/CNT/tree/issues-data/14\n\
   \nFull spec and artifacts (AI-facing): `.issues/14/`\n\n\U0001F916 Co-authored with\
   \ AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)\n"
 created_at: '2026-11-07T04:53:12+00:00'
-updated_at: '2026-11-07T05:02:09+00:00'
+updated_at: '2026-11-07T05:42:28+00:00'
 phase: spec
 github_url: https://github.com/CherokeeLanguage/CNT/issues/14
