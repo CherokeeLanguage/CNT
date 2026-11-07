@@ -19,9 +19,14 @@ any reference no available image can resolve.
 
 - **D1 — copy source for the four `BBCC00` restores:** `200100.png` (James
   chapter 1, 389×93, the bolder-inked exemplar). Grounds: glyph-identical
-  heading word and numeral across chapter-1 crops (verified by the
-  2026-11-07 image inspection); within the exemplar dimension family
-  (93–105 px strips). Copied byte-identically to `180100.png`,
+  heading word and numeral across the chapter-1 exemplars, and
+  `200100.png`'s heavier inking relative to `190100.png` — both verified by
+  the 2026-11-07 BBCC00 form inspection
+  (`.issues/14/research/2026-11-07_bbcc00-form-inspection.md`); within the
+  exemplar dimension family (93–105 px strips); and the edition itself
+  carries no chapter-heading line for the four single-chapter books
+  (`.issues/14/research/2026-11-07_single-chapter-openings-verification.md`).
+  Copied byte-identically to `180100.png`,
   `240100.png`, `250100.png`, `260100.png`.
 - **D2 — import sources for the four `NN_` strips** (read-only reads from
   the developer-named sibling checkout
@@ -99,19 +104,28 @@ any reference no available image can resolve.
 ### Item 3 — the orphan sweep in the gate script (SC-4 sweep side)
 
 - **Deliverable:** `tools/verify-served-tree.sh` extended additively with a
-  tree→manifest sweep: after the existing manifest→tree check, enumerate the
-  tree's files and report each file absent from the manifest
-  (`orphan: <path>` lines + an orphan count line); a detected orphan fails
-  the script's exit. The existing output lines and their semantics are
-  unchanged (additive extension per the spec's R4).
-- **RED:** the current script is manifest→tree only — demonstrated by
-  copying the extracted served tree to a scratch directory, adding a scratch
-  file, and running the current script: it reports matched/OK and no
-  orphan complaint (the assertion "the gate detects tree files absent from
-  the manifest" fails).
-- **GREEN:** implement the sweep; re-run the scratch demonstration: the
-  scratch file is reported as an orphan and the exit fails; re-run over the
-  unmodified scratch tree: `8553/8553 matched` + `0 orphans`, exit 0.
+  tree→manifest sweep scoped to the served surfaces: after the existing
+  manifest→tree check, enumerate the served tree's files — all of `cnt/`,
+  plus `cntdata/`'s four-digit HTML files, plus the committed tarball file —
+  and report each served file absent from the manifest (`orphan: <path>`
+  lines + an orphan count line); a detected orphan fails the script's exit.
+  The enumeration is NOT a whole-directory walk of `cntdata/` (it holds
+  ~15,900 non-served files — the verse-level data and auxiliary working
+  files — which an unscoped sweep would falsely flag). The existing output
+  lines and their semantics are unchanged (additive extension per the
+  spec's R4).
+- **RED:** the current script is manifest→tree only — demonstrated on a
+  repo-root-shaped scratch copy (the script's interface takes a repo root:
+  it reads `cntdata/served-tree-manifest.md5` and `cntdata/website.tar.gz`
+  from it and maps served names to the `cnt/` and `cntdata/` surfaces):
+  copy the manifest, the tarball, and the mapped surfaces into a scratch
+  repo-root shape, add a scratch file to a mapped surface, and run the
+  current script — it reports matched/OK and no orphan complaint (the
+  assertion "the gate detects served files absent from the manifest"
+  fails).
+- **GREEN:** implement the scoped sweep; re-run the scratch demonstration:
+  the scratch file is reported as an orphan and the exit fails; re-run over
+  the unmodified scratch root: `8553/8553 matched` + `0 orphans`, exit 0.
 - **Instrument:** executed before/after captures of both scratch runs and
   the unmodified-tree run, captured under `.issues/14/research/`.
 
@@ -137,9 +151,12 @@ any reference no available image can resolve.
 ### Item 5 — manifest and stated counts (SC-4 both directions, SC-9, SC-5)
 
 - **Deliverable:** `cntdata/served-tree-manifest.md5` regenerated from the
-  post-work tree (8,553 → 8,561 entries: +8 PNGs — `BB_` family 23 → 27,
-  `BBCC00` family 283 → 287, `BBCCVV` unchanged at 8,241; the manifest
-  covers the tarball file itself as before); `docs/SERVED-TREE.md` and the
+  post-work tree (8,553 → 8,561 entries: the six-digit PNG family
+  8,241 → 8,245 — within it the `00`-suffixed sub-family (`BBCC00` chapter
+  headings and `BB0000` book titles) 283 → 287, while the disjoint
+  verse-scan family stays 7,958 — and the two-digit `BB_` strips 23 → 27;
+  PNG total 8,264 → 8,272; the manifest covers the tarball file itself as
+  before); `docs/SERVED-TREE.md` and the
   `deploy/Dockerfile` bake-stage comment updated to the reconciled counts
   (8,561; composition as the doc's own structure states it).
 - **RED:** with Item 4 landed and Item 3's sweep in place, the extended gate
@@ -178,7 +195,10 @@ any reference no available image can resolve.
 - **Deliverable:** one open PR against `master` from the feature branch,
   one squashed commit carrying Items 1–5's changes (the record, the
   instrument, the sweep, the 8 PNGs, both archives, the manifest, the two
-  stated-count surfaces); the PR body carries the summary and the executed
+  stated-count surfaces) plus `deploy/deployment-record.txt` (appended by
+  Item 6's deploy — the deployed commit cannot contain the record of its
+  own deploy, so the record update lands after Item 6 and rides the PR);
+  the PR body carries the summary and the executed
   evidence (RED/GREEN captures, the live probe). No agent merge — the
   human merges.
 - **RED:** `gh pr list` shows no open PR for the branch.
@@ -232,7 +252,8 @@ per the test-discipline card.
 One feature branch, one squashed commit, one PR, one redeploy. Repo deltas:
 1 new doc, 1 new tool script, 1 modified tool script, 8 new PNGs, 2
 regenerated archives (byte-identical twins), 1 regenerated manifest, 2
-edited stated-count surfaces (docs + Dockerfile comment). No build-system
+edited stated-count surfaces (docs + Dockerfile comment), and 1 updated
+deployment record (appended by the deploy, riding the PR). No build-system
 change; the repo has no build framework at its root (data-only archive) —
 all checks run as direct script executions per the repo's own tools
 convention.
@@ -242,6 +263,13 @@ convention.
 - Tar regeneration must preserve the flat member layout exactly (the served
   tree's shape is the tarball extraction, never the repo's directory
   split); D5's tar-once-copy-twice rule prevents twin drift.
+- The gate script's interface takes a repo root (manifest + tarball +
+  mapped surfaces), not a flat extraction — Item 3's scratch demonstration
+  and any local gate run must use a repo-root-shaped tree.
+- The orphan sweep must stay scoped to the served surfaces: `cntdata/`
+  holds ~15,900 non-served files (verse-level data, auxiliary working
+  files) that an unscoped walk would falsely flag — Item 5's real-tree run
+  would be unreachable with an over-broad sweep.
 - The manifest's line format must match the existing file's format exactly
   (the gate parses it); regenerate with the same command shape the current
   manifest was produced with, verified by Item 3's sweep + Item 5's
