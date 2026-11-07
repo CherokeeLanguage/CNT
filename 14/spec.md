@@ -106,9 +106,12 @@ Captures for every check below sit under `.issues/14/research/` (dated
   reconciled after the change; edits to chapter pages SHALL be confined to
   the image references (no other content change).
 - **R4** — If the served-tree file universe changes (files added or removed),
-  CNT#9's served-tree manifest SHALL be regenerated to match, and
-  `tools/verify-served-tree.sh` over the post-work tree SHALL report
-  0 missing / 0 orphans.
+  CNT#9's served-tree manifest SHALL be regenerated to match, and the
+  reconciliation SHALL be evidenced in both directions by
+  `tools/verify-served-tree.sh` over the post-work tree: the script's existing
+  manifest→tree check SHALL report 0 missing, and a tree→manifest orphan sweep
+  added to it SHALL report 0 orphans — the extension is additive, leaving the
+  script's existing output and gate behavior unchanged.
 - **R5** — A reference-integrity instrument SHALL be committed in the repo's
   `tools/` family: it enumerates every `.png` reference in the served tree's
   HTML pages and reports each referenced-but-missing file with its referrer
@@ -130,7 +133,7 @@ Captures for every check below sit under `.issues/14/research/` (dated
 | SC-1 | The disposition record exists, is committed, and covers all 8 files / 23 references / 20 pages of the 2026-11-07 audit, each reference carrying exactly one outcome (restore / correct / accept) and a reason | structural | artifact parse of the record against the audit enumeration captured under `.issues/14/research/` |
 | SC-2 | The committed instrument (R5) executed over the post-work served tree flags exactly the accept-dispositioned references and nothing else — every restore/correct disposition shows resolved | structural | executed instrument output reconciled 1:1 against the disposition record |
 | SC-3 | The surfaces are reconciled post-work: every touched chapter page is identical across `cntdata/`, `cnt/`, and the extracted tarball members, and the two tarball copies remain byte-identical to each other | structural | executed byte-diff of the touched files across surfaces + md5 comparison of the two tarballs |
-| SC-4 | The manifest gate holds post-work: `tools/verify-served-tree.sh` over the post-work tree reports 0 missing / 0 orphans against the manifest (regenerated per R4 if the universe changed) | structural | executed script capture |
+| SC-4 | The manifest gate holds post-work in both directions: `tools/verify-served-tree.sh` — with its additive tree→manifest orphan sweep — executed over the post-work tree reports 0 missing (manifest→tree) and 0 orphans (tree→manifest) against the manifest regenerated per R4 | structural | executed script capture showing both direction lines |
 | SC-5 | Dated captures of this work's executed evidence (audit, instrument runs, surface reconciliation, deploy probe) sit under `.issues/14/research/` in the standing probe-SOP family form (executing account in each capture header, marker-labeled sections) | structural | artifact existence + completeness parse |
 | SC-6 | One open PR against `master`; no agent merge | structural | `gh pr view` |
 | SC-7 | Post-redeploy, the live `/cnt` tree reflects the dispositions: restored/corrected references return 200 and accept-dispositioned references return 404, exactly as the disposition record states | behavioral | live HTTP probe capture of the affected reference paths, compared against the record |
@@ -142,6 +145,12 @@ Captures for every check below sit under `.issues/14/research/` (dated
   `src=`/`href=` references from the served chapter pages and checking each
   against the served-tree root, printing `missing-file -> referrer pages`
   lines. It reports; the disposition record carries the decisions.
+- **The orphan sweep** extends the delivered gate script
+  (`tools/verify-served-tree.sh`) additively: a tree→manifest enumeration
+  beside its existing manifest→tree check, so the manifest reconciliation R4
+  requires is evidenced by the script itself in both directions and the
+  in-build gate gains the orphan direction automatically; the existing output
+  stays byte-compatible.
 - **Per-reference disposition** is decided at implementation from the
   recorded outcomes, with the investigation paths the report names: the four
   `NN_` strips have a candidate source (the CherokeeNewTestament.org
@@ -190,9 +199,11 @@ findings and this session's verification — the 2026-11-07 exhaustive audit
 (8 files / 23 references / 20 pages) and the live spot-check, both captured
 under `.issues/14/research/`. R1/R2 implement the disposition requirement
 verbatim; R3/R4 are the fix's reconciliation obligations toward the served
-tree and CNT#9's delivered gate; R5 commits the audit that found the defect
-as the standing instrument; R7 closes the loop to the surface the failure was
-observed on; R6 is the deck's PR boundary.
+tree and CNT#9's delivered gate — R4's tree→manifest sweep added to the gate
+script so the manifest reconciliation is evidenced rather than asserted; R5
+commits the audit that found the defect as the standing instrument; R7 closes
+the loop to the surface the failure was observed on; R6 is the deck's PR
+boundary.
 
 > Full spec and plan artifacts: https://github.com/CherokeeLanguage/CNT/tree/issues-data/14
 

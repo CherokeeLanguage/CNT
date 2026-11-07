@@ -1,0 +1,22 @@
+# Validation record — CNT#14 (YAML)
+# Loop history per the spec card's validation standards §Loop (criteria set:
+# .opencode/skills/spec/references/validation-standards.md, applied verbatim
+# every round). The verdict itself is recorded once per the verify card's
+# recording rule (chat) — this file is the loop's history, never a second
+# copy of the verdict.
+
+spec:
+  - round: 1
+    date: "20261107051055"
+    artifact: .issues/14/spec.md
+    artifact_revision: "store commit 3764ffe8 (initial filing: triage conversion of the 2026-11-06 crawl-probe bug report — 8 referenced-but-missing /cnt scan images, 23 broken references, 20 chapter pages)"
+    reviewer: "fresh-context reviewer (general sub-agent), budget comparable to implementor; read artifacts and criteria reference directly"
+    findings:
+      - class: "incapable instrument (defect class 5), with a factual misstatement of the instrument's behavior"
+        location: "R4 / SC-4"
+        ground: "tools/verify-served-tree.sh is manifest-to-tree only (per-entry presence+md5, prints matched/total); it has no tree-to-manifest orphan enumeration, so the '0 missing / 0 orphans' criterion's orphan half is unverified by construction; the phrasing was imported from CNT#13's replica-based delivery comment, a different two-directional check"
+        remediation: "R4/SC-4 revised in place: the orphan direction gets a real instrument — tools/verify-served-tree.sh extended additively with a tree-to-manifest sweep (existing output unchanged), both directions evidenced by the script's own executed capture"
+    adjudicated_preferences: "none"
+    structural_reevaluation: "none this round"
+    reviewer_disclosed_evidence_gaps: "the pre-conversion report's referrer-table wording has no preserved copy to check; its substance (own-book references, sixteen 07_.png referrers) was independently verified against the served tree, and no requirement or criterion rests on the original table"
+    loop_state: "FAIL round — one finding, remediated in place; re-validation round 2 follows"
