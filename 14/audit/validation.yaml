@@ -136,3 +136,17 @@ plan_validation:
     structural_reevaluation: "none this round"
     reviewer_disclosed_evidence_gaps: "local checkout is 2 commits stale vs origin/master (pre-#15) — session hygiene at branch time, not a plan defect (deck-mandated trunk freshness applies)"
     loop_state: "FAIL round — six findings, remediated in place (one at the spec level, five in the plan); re-validation round 2 follows"
+  - round: 2
+    date: "20261107170004"
+    artifact: .issues/14/plan.md
+    artifact_revision: "store commit 1d8a1115 (round-1 revision: D1 grounds re-cited to the persisted form-inspection capture; Item 3 RED on repo-root-shaped scratch + sweep scoped; Item 5 composition arithmetic corrected; Item 7/Cost frame carry the deployment record)"
+    reviewer: "fresh-context reviewer (general sub-agent), budget comparable to implementor; read plan, consumed spec, and criteria reference directly"
+    findings:
+      - class: "cross-reference sufficiency: header provenance stale"
+        location: "plan header"
+        ground: "header cited 'validation rounds 1-6, terminal PASS' while the consumed spec's terminal validation is round 7 (the copies-direction revision); contradicted the plan's own body alignment"
+        remediation: "header updated to cite rounds 1-7 with terminal PASS at round 7"
+    adjudicated_preferences: "none"
+    structural_reevaluation: "none this round"
+    reviewer_disclosed_evidence_gaps: "none — reviewer re-verified D1's capture citation content, the gate-script interface, the sweep-scope mapping rule, cntdata/ non-served count (15,927), the full manifest arithmetic, the deploy script's record append, all four sibling md5s, and all seven REDs' current-state failure"
+    loop_state: "FAIL round — one finding, remediated in place; re-validation round 3 follows"
