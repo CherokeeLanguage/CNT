@@ -20,13 +20,11 @@ referenced-but-missing files: 8; broken references: 23; referencing pages: 20
 25_.png -> 2501.html
 260100.png -> 2601.html
 
-## marker: cntdata/ chapter-page copies byte-identical to the extraction (the 6 affected pages)
-0702.html IDENTICAL
-0703.html IDENTICAL
-1901.html IDENTICAL
-2501.html IDENTICAL
-2601.html IDENTICAL
-2701.html IDENTICAL
+## marker: cntdata/ chapter-page copies byte-identical to the extraction (all 260, per-page cmp)
+compared: 260 cntdata/*.html vs the same paths in the extraction — identical: 260, differs: 0
+
+## marker: post-#15 cnt/ html copies byte-identical to the extraction (all, via git archive of d6d60c26)
+compared: 288 cnt/*.html at d6d60c26 vs the same paths in the extraction — identical: 288, differs: 0
 
 ## marker: universe identity — the two website.tar.gz copies byte-identical
 e41315255fe967650fe61bc48ebef404  cntdata/website.tar.gz

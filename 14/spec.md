@@ -154,9 +154,13 @@ Captures for every check below sit under `.issues/14/research/` (dated
 - **The orphan sweep** extends the delivered gate script
   (`tools/verify-served-tree.sh`) additively: a tree→manifest enumeration
   beside its existing manifest→tree check, so the manifest reconciliation R4
-  requires is evidenced by the script itself in both directions and the
-  in-build gate gains the orphan direction automatically; the existing output
-  stays byte-compatible.
+  requires is evidenced by the script itself in both directions; the existing
+  output stays byte-compatible. The in-build gate is a separate script
+  (`deploy/verify-bake.sh`, manifest→baked-tree, COPY'd in by the
+  `deploy/Dockerfile` build) — it gains no orphan direction from this change
+  and keeps passing because the manifest and the tarball are regenerated
+  together; the pre-build both-direction check is what evidences the
+  reconciliation.
 - **Per-reference disposition** is decided at implementation from the
   recorded outcomes, with the investigation paths the report names: the four
   `NN_` strips have a candidate source (the CherokeeNewTestament.org

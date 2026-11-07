@@ -52,3 +52,21 @@ spec:
     structural_reevaluation: "none this round"
     reviewer_disclosed_evidence_gaps: "none — reviewer independently re-verified the audit enumeration (including reference-form exhaustiveness), live probes, surface byte-identity across all 288 pages, naming structure, dimensions, gate-script behavior and execution (8553/8553), manifest census (8,264+288+1), cross-referenced tickets, Zola claims, capture form, repo-boundary containment, and SC-8's base-commit blob availability"
     loop_state: "FAIL round — two findings, remediated in place; re-validation round 4 follows"
+  - round: 4
+    date: "20261107053441"
+    artifact: .issues/14/spec.md
+    artifact_revision: "store commit 9b898a45 (round-3 revision: SC-7 per-outcome branches with page-fetch instrument; R4 artifacts-of-record clause; SC-9 added; Impact blast radius updated)"
+    reviewer: "fresh-context reviewer (general sub-agent), budget comparable to implementor; read artifacts and criteria reference directly"
+    findings:
+      - class: "fabricated claims (current-state assertion about code behavior, never checked against the code it describes)"
+        location: "Approach, 'The orphan sweep' paragraph"
+        ground: "claimed the tools/ script extension means 'the in-build gate gains the orphan direction automatically' — false: the in-build gate is deploy/verify-bake.sh (manifest-to-baked-tree only, COPY'd in by deploy/Dockerfile); deploy/ references tools/verify-served-tree.sh nowhere; the claim misstated the gate architecture"
+        remediation: "Approach sentence corrected: the sweep extends the tools/ script only; the in-build gate is named as a separate script with its own direction, keeps passing because manifest and tarball regenerate together, and the pre-build both-direction check is what evidences the reconciliation"
+      - class: "cross-reference sufficiency: a claim cited to evidence that does not support its breadth"
+        location: "Facts bullet 1 parenthetical (byte-identity of cntdata/*.html with tarball members and post-#15 cnt/ copies)"
+        ground: "the claim asserts 260-page and post-#15-tree-wide byte identity; the cited capture recorded the byte check for 6 pages plus reference-set equality for 2 cnt/ pages — the fact itself verified true, the citation breadth deficient"
+        remediation: "the audit capture regenerated with full-breadth executed byte checks: all 260 cntdata pages vs the extraction (260/260 identical) and all cnt/*.html at d6d60c26 vs the extraction (identical, 0 differs), recorded as new marker sections"
+    adjudicated_preferences: "none"
+    structural_reevaluation: "none this round"
+    reviewer_disclosed_evidence_gaps: "none — reviewer re-verified the audit enumeration, byte-identity at full breadth, tarball identity, live probes, naming/dimensions, Zola claims, stated-count surfaces, the deploy tooling architecture, and all cross-referenced records"
+    loop_state: "FAIL round — two findings, remediated in place; re-validation round 5 follows (revision count 4 — count-trigger threshold watched)"
