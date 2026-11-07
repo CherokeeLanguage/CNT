@@ -22,10 +22,11 @@ Captures for every check below sit under `.issues/14/research/` (dated
 2026-11-07).
 
 - **The defect set (exhaustive audit):** every quoted `.png` reference across
-  all 260 served chapter pages (`cntdata/*.html`, byte-identical to the
-  tarball members and to the post-#15 `cnt/` copies) checked against the
-  served-tree image source — 8,737 distinct references found; exactly 8 files
-  are referenced but missing; 23 broken references across 20 pages:
+  all 288 served HTML pages — the 260 chapter pages plus the 28 book-level
+  pages (`cntdata/*.html` byte-identical to the tarball members and to the
+  post-#15 `cnt/` copies) — checked against the served-tree image source —
+  8,737 page-unique references found; exactly 8 files are referenced but
+  missing; 23 broken references across 20 pages:
   - `07_.png` ← all sixteen 1 Corinthians chapter pages (`0701`–`0716`)
   - `180100.png`, `18_.png` ← `1801` (Philemon 1)
   - `240100.png`, `24_.png` ← `2401` (2 John 1)
@@ -109,9 +110,9 @@ Captures for every check below sit under `.issues/14/research/` (dated
   `tools/verify-served-tree.sh` over the post-work tree SHALL report
   0 missing / 0 orphans.
 - **R5** — A reference-integrity instrument SHALL be committed in the repo's
-  `tools/` family: it enumerates every `.png` reference in the served chapter
-  pages and reports each referenced-but-missing file with its referrer pages;
-  its output is the reconciliation basis for SC-2.
+  `tools/` family: it enumerates every `.png` reference in the served tree's
+  HTML pages and reports each referenced-but-missing file with its referrer
+  pages; its output is the reconciliation basis for SC-2.
 - **R6** — The work lands on a feature branch as PR(s) against `master`; the
   agent performs no merge.
 - **R7** — The resolved state SHALL reach the live `/cnt` tree: a redeploy

@@ -1,38 +1,36 @@
-# Reference audit — referenced-but-missing PNGs across the served chapter pages (CNT#14)
+# Reference audit — referenced-but-missing PNGs across the served tree (CNT#14)
 
 executing account: OpenCode (huggingface/zai-org/GLM-5.3-Flash) for michael-conrad (local session, /home/muksihs/git/CNT)
 date: 2026-11-07 UTC
 checkout state: master @ 981512ef54d8782e0311e4125ae4e552c347c4ae (pre-#15); post-#15 state verified against git objects at d6d60c26 (origin/master)
-
-## marker: audit command
-for each of the 260 cntdata/*.html chapter pages: every quoted .png reference extracted; each checked for existence in cnt/ (the served-tree image source). Totals, the missing set with referrers, and the identity checks below.
+audit surface: the website.tar.gz extraction at /tmp/opencode/wt14 (the served tree) — every .html file, every quoted .png reference, checked against the extraction root
 
 ## marker: audit totals
-chapter pages audited: 260
-distinct .png references found: 8737
+html files audited: 288 (260 chapter pages + 28 book-level/top-level pages)
+page-unique .png references found (a name counted once per page): 8737
 referenced-but-missing files: 8; broken references: 23; referencing pages: 20
 
 ## marker: missing references (file -> referrer pages)
-07_.png -> 0701 0702 0703 0704 0705 0706 0707 0708 0709 0710 0711 0712 0713 0714 0715 0716
-180100.png -> 1801
-18_.png -> 1801
-240100.png -> 2401
-24_.png -> 2401
-250100.png -> 2501
-25_.png -> 2501
-260100.png -> 2601
+07_.png -> 0701.html 0702.html 0703.html 0704.html 0705.html 0706.html 0707.html 0708.html 0709.html 0710.html 0711.html 0712.html 0713.html 0714.html 0715.html 0716.html
+180100.png -> 1801.html
+18_.png -> 1801.html
+240100.png -> 2401.html
+24_.png -> 2401.html
+250100.png -> 2501.html
+25_.png -> 2501.html
+260100.png -> 2601.html
 
-## marker: universe identity — the two website.tar.gz copies byte-identical
-e41315255fe967650fe61bc48ebef404  cntdata/website.tar.gz
-e41315255fe967650fe61bc48ebef404  cnt/website.tar.gz (extracted from git object d6d60c26)
-
-## marker: tarball HTML == cntdata HTML (the 6 affected pages, byte comparison)
+## marker: cntdata/ chapter-page copies byte-identical to the extraction (the 6 affected pages)
 0702.html IDENTICAL
 0703.html IDENTICAL
 1901.html IDENTICAL
 2501.html IDENTICAL
 2601.html IDENTICAL
 2701.html IDENTICAL
+
+## marker: universe identity — the two website.tar.gz copies byte-identical
+e41315255fe967650fe61bc48ebef404  cntdata/website.tar.gz
+e41315255fe967650fe61bc48ebef404  cnt/website.tar.gz (extracted from git object d6d60c26)
 
 ## marker: the 8 files absent from the post-#15 published tree (git objects at d6d60c26)
 absent post-#15: cnt/07_.png
