@@ -5,8 +5,10 @@ SPDX-License-Identifier: MIT
 
 # Plan — CNT#14: disposition the 8 referenced-but-missing `/cnt` scan images
 
-Consumes the validated spec at `.issues/14/spec.md` (validation rounds 1–6,
-terminal PASS). Spec context the items rely on: the 2026-11-07 exhaustive
+Consumes the validated spec at `.issues/14/spec.md` (validation rounds 1–7;
+terminal PASS at round 7, the re-validation that carried the developer's
+copies direction into the spec's approach). Spec context the items rely on:
+the 2026-11-07 exhaustive
 audit (8 files / 23 references / 20 pages, captured under
 `.issues/14/research/`), the served-truth topology (tarball extraction baked
 by the CNT#11 image, gated by the CNT#9 manifest), and the two developer
