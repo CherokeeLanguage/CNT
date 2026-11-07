@@ -12,3 +12,10 @@
 - CNT content commit: ef45e643c26f0fa9bd84c6e43372ac22a30213f9
 - image content identity: sha256:f934ce213f93114326960934e40dc7eaf0a30671eabeb4c03478266bb3837859
 - deploy mode: redeploy (slot image line repointed, routing untouched)
+
+## deployment 2026-11-07T17:28:55Z
+
+- image tag: cnt-web:4d475568d2275cd1a75c1c84a8bd1b7f0f1286f2
+- CNT content commit: 4d475568d2275cd1a75c1c84a8bd1b7f0f1286f2
+- image content identity: sha256:566892d3753d035b5867ae970be09227dd1d42914c8f99cbc94c12123d952432
+- deploy mode: redeploy (slot image line repointed, routing untouched)

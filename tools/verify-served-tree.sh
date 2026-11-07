@@ -63,8 +63,28 @@ while read -r hash name; do
 done < "$manifest"
 
 echo "$matched/$total matched"
-if [ "$failed" -ne 0 ] || [ "$matched" -ne "$total" ]; then
-  echo "FAILED: $failed mismatch(es)/absence(s)" >&2
+
+# tree→manifest sweep (additive, CNT#14 R4): every served-surface file must
+# carry a manifest entry. Scope = the served surfaces per the mapping rule:
+# all of cnt/ (published tree), cntdata/'s four-digit chapter HTMLs, and the
+# committed tarball. cntdata/ holds ~15,900 non-served files (verse-level
+# data, auxiliary working files) that an unscoped walk would falsely flag.
+sweep_files="$(mktemp)"
+{
+  find "$root/cnt" -maxdepth 1 -type f -printf '%f\n'
+  for f in "$root"/cntdata/[0-9][0-9][0-9][0-9].html; do [ -e "$f" ] && basename "$f"; done
+  echo "website.tar.gz"
+} | LC_ALL=C sort -u > "$sweep_files"
+awk '{print $2}' "$manifest" | LC_ALL=C sort -u > "$tmp/manifest-names"
+orphans=$(LC_ALL=C comm -23 "$sweep_files" "$tmp/manifest-names" | wc -l)
+if [ "$orphans" -gt 0 ]; then
+  LC_ALL=C comm -23 "$sweep_files" "$tmp/manifest-names" | sed 's/^/orphan: /'
+fi
+rm -f "$sweep_files"
+echo "orphans: $orphans"
+
+if [ "$failed" -ne 0 ] || [ "$matched" -ne "$total" ] || [ "$orphans" -ne 0 ]; then
+  echo "FAILED: $failed mismatch(es)/absence(s), $orphans orphan(s)" >&2
   exit 1
 fi
 echo "OK: served-tree manifest verified"
