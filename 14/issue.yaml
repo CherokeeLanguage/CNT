@@ -3,6 +3,50 @@ title: 8 chapter pages reference PNGs that exist nowhere — 404 on ced1 AND on 
 status: open
 labels:
 - needs-approval
-body: ''
+body: '**Provenance:** found 2026-11-06 by the exhaustive site crawl probe (cherokeedictionary
+  tests/crawl_probe.py, 300 pages) run against the new-stack deployment. Verified
+  404 on **BOTH** hosts — these are pre-existing content defects in the pages themselves,
+  not migration losses (the published tree, the CNT repo, and the deployed image all
+  lack the files).
+
+
+  ## The broken references
+
+
+  | missing file | referenced by |
+
+  |---|---|
+
+  | `07_.png` | `/cnt/0702.html`, `/cnt/0703.html` |
+
+  | `180100.png`, `18_.png` | `/cnt/1901.html` |
+
+  | `240100.png`, `24_.png` | `/cnt/2501.html` |
+
+  | `250100.png`, `25_.png` | `/cnt/2601.html` |
+
+  | `260100.png` | `/cnt/2701.html` |
+
+
+  The naming (`NNNNNN.png` verse ids vs the stray `NN_.png` chapter-image forms) suggests
+  the chapter-level images were never generated/scan-cropped, or were lost before
+  the 2020 posterity checkin — CNT-diglot''s artwork pipeline (or the original scans)
+  is where the truth lives.
+
+
+  ## What this issue asks
+
+
+  1. Disposition each of the 8 references: regenerate/scan the missing image, or correct
+  the page''s reference (drop/replace), or accept the broken image with a recorded
+  reason.
+
+  2. The CNT-diglot question (CNT#13) covers the same content family — coordinate
+  there if the pages are generated.
+
+
+  🤖 Co-authored with AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)
+
+  '
 created_at: '2026-11-07T04:53:12+00:00'
-updated_at: '2026-11-07T04:53:12+00:00'
+updated_at: '2026-11-07T04:53:34+00:00'
