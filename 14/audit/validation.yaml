@@ -150,3 +150,27 @@ plan_validation:
     structural_reevaluation: "none this round"
     reviewer_disclosed_evidence_gaps: "none — reviewer re-verified D1's capture citation content, the gate-script interface, the sweep-scope mapping rule, cntdata/ non-served count (15,927), the full manifest arithmetic, the deploy script's record append, all four sibling md5s, and all seven REDs' current-state failure"
     loop_state: "FAIL round — one finding, remediated in place; re-validation round 3 follows"
+  - round: 3
+    date: "20261107170834"
+    artifact: .issues/14/plan.md
+    artifact_revision: "store commit a18c8bf5 (round-2 revision: header provenance updated to rounds 1-7)"
+    reviewer: "fresh-context reviewer (general sub-agent), budget comparable to implementor; read plan, consumed spec, and criteria reference directly"
+    findings:
+      - class: "cross-reference sufficiency: specifics cited to evidence that does not contain them"
+        location: "Not included, third bullet"
+        ground: "the bullet cited kraken 7.1.1 and port 11434 as 'recorded in the issue's research store' — the ocr-model-landscape capture records neither the version string nor the port; both specifics verified true this session but never persisted"
+        remediation: "the session's toolkit probe persisted as 2026-11-07_toolkit-probe.md (kraken --version output, the 163:11434 model census, the 162 unreachability probe) and the bullet now cites it"
+    adjudicated_preferences: "none"
+    structural_reevaluation: "none this round"
+    reviewer_disclosed_evidence_gaps: "none — reviewer verified the header against the validation record, D1's citations against both captures, the gate-script interface, the sweep scope against the mapping rule and a direct cntdata/ count (15,927), the full manifest arithmetic, the deploy script's record append, the sibling md5s, all seven REDs, SC coverage, and internal consistency"
+    loop_state: "FAIL round — one finding, remediated in place; re-validation round 4 follows"
+  - round: 4
+    date: "20261107171356"
+    artifact: .issues/14/plan.md
+    artifact_revision: "store commit a18c8bf5 (round-3 revision: Not-included bullet cites the persisted toolkit-probe capture)"
+    reviewer: "fresh-context reviewer (general sub-agent), budget comparable to implementor; read plan, consumed spec, and criteria reference directly"
+    findings: []
+    adjudicated_preferences: "none — zero-finding round; reviewer re-verified D2's md5s byte-for-byte, the gate script's interface and sweep-scope fit, the manifest census and member arithmetic (8,552 file members, no self-member, tar-list ./ artifact identified), D1's capture citations, the live-probe RED, the deployment-record mechanics, header provenance, and SC coverage both directions"
+    structural_reevaluation: "none this round"
+    reviewer_disclosed_evidence_gaps: "cnt/website.tar.gz absent from the stale local checkout but confirmed in origin/master's tree (blob verified) — session hygiene at branch time"
+    loop_state: "zero-finding terminal round — plan validation converged at round 4; implement consumes the plan under the terminal-stage approval"
