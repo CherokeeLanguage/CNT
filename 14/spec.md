@@ -49,6 +49,17 @@ Captures for every check below sit under `.issues/14/research/` (dated
   single-chapter books), the `BBCCVV.png` verse scans, and an `NN_.png`
   book-thumbnail strip at the page bottom (exists for most books; missing for
   books 07, 18, 24, 25).
+- **The edition carries no chapter-heading line for the four single-chapter
+  books (verified 2026-11-07):** in the Smithsonian scribe scan of the 1860
+  ABS edition, Philemon (leaf n340, p. 337), 2 John (n380, p. 377), 3 John
+  (n381, p. 378), and Jude (n382, p. 379) each open title block → rule →
+  verse 1 directly; the `BBCC00` "chapter + numeral" display form exists
+  only at multi-chapter chapter openings (e.g. Hebrews ch. 1 opening,
+  p. 338, column-centered). The four missing files were therefore never
+  croppable from the edition — consistent with their absence for exactly
+  these four books (captures:
+  `2026-11-07_bbcc00-form-inspection.md`,
+  `2026-11-07_single-chapter-openings-verification.md`).
 - **Cross-repo observation (CherokeeNewTestament.org, audited 2026-11-07):**
   the same four `BBCC00.png` files are referenced-but-missing there (one page
   each: `philemon/1801`, `2-john/2401`, `3-john/2501`, `jude/2601`), while
@@ -170,10 +181,15 @@ Captures for every check below sit under `.issues/14/research/` (dated
   file (`07_.png` md5-identical across its 17 copies; `18_`/`24_`/`25_` two
   copies each); the strips' dimensions differ from CNT's existing `NN_`
   siblings — a known, accepted consequence of the directed import. The four
-  single-chapter `BBCC00` scans exist in neither repo, so restore there means
-  regeneration from the source scans or the diglot artwork pipeline, with
-  correct/accept as the report's fallbacks. The disposition record is where
-  each decision lands with its reason.
+  single-chapter `BBCC00` scans exist in neither repo, and the edition
+  itself carries no chapter-heading line for those books (Facts) — no
+  authentic segment exists to extract. Developer direction the same day
+  restores them by copy: an existing chapter-1 heading crop (`200100.png`,
+  glyph-identical word and numeral per the form inspection) copied
+  byte-identically to the four per-chapter paths; any reference no available
+  image can resolve is fixed by correcting the page's reference (drop or
+  replace) per the same direction. The disposition record is where each
+  decision lands with its reason.
 - **Propagation** follows the existing reconcile-and-redeploy loop: content
   lands on all surfaces, the tarball regenerates if members change, the
   manifest regenerates if the universe changes, and a redeploy at a new
@@ -213,7 +229,10 @@ regenerate/scan the missing image, or correct the page's reference
 CNT#13 coordination note; developer direction 2026-11-07 fixes the restore
 source for the four `NN_` strips — import from the sibling project where it
 holds the file (verified: it holds all four strips, none of the four
-`BBCC00` scans; capture under `.issues/14/research/`). The observed failures
+`BBCC00` scans; capture under `.issues/14/research/`); a further developer
+direction the same day restores the four `BBCC00` references by copies of an
+existing chapter-1 heading crop, with corrections (drop/replace) as the
+fallback for any reference no available image can resolve. The observed failures
 are the report's crawl
 findings and this session's verification — the 2026-11-07 exhaustive audit
 (8 files / 23 references / 20 pages) and the live spot-check, both captured
