@@ -137,6 +137,7 @@ Captures for every check below sit under `.issues/14/research/` (dated
 | SC-5 | Dated captures of this work's executed evidence (audit, instrument runs, surface reconciliation, deploy probe) sit under `.issues/14/research/` in the standing probe-SOP family form (executing account in each capture header, marker-labeled sections) | structural | artifact existence + completeness parse |
 | SC-6 | One open PR against `master`; no agent merge | structural | `gh pr view` |
 | SC-7 | Post-redeploy, the live `/cnt` tree reflects the dispositions: restored/corrected references return 200 and accept-dispositioned references return 404, exactly as the disposition record states | behavioral | live HTTP probe capture of the affected reference paths, compared against the record |
+| SC-8 | Every chapter page the work edits carries a pre-work→post-work delta confined to the image references the disposition touches — no other byte of the page changes in any surface it lives in | structural | executed per-page pre/post comparison (base-commit blob vs post-work file, per touched surface) with deltas shown reference-confined, captured under `.issues/14/research/` |
 
 ## Approach
 
@@ -200,7 +201,9 @@ findings and this session's verification — the 2026-11-07 exhaustive audit
 under `.issues/14/research/`. R1/R2 implement the disposition requirement
 verbatim; R3/R4 are the fix's reconciliation obligations toward the served
 tree and CNT#9's delivered gate — R4's tree→manifest sweep added to the gate
-script so the manifest reconciliation is evidenced rather than asserted; R5
+script so the manifest reconciliation is evidenced rather than asserted, and
+R3's confinement clause operationalized by SC-8's pre/post comparison so the
+archive's page content is preserved, not merely propagated consistently; R5
 commits the audit that found the defect as the standing instrument; R7 closes
 the loop to the surface the failure was observed on; R6 is the deck's PR
 boundary.

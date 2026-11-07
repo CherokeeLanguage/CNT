@@ -20,3 +20,17 @@ spec:
     structural_reevaluation: "none this round"
     reviewer_disclosed_evidence_gaps: "the pre-conversion report's referrer-table wording has no preserved copy to check; its substance (own-book references, sixteen 07_.png referrers) was independently verified against the served tree, and no requirement or criterion rests on the original table"
     loop_state: "FAIL round — one finding, remediated in place; re-validation round 2 follows"
+  - round: 2
+    date: "20261107051838"
+    artifact: .issues/14/spec.md
+    artifact_revision: "store commit 3aefafe8 (round-1 revision: R4/SC-4 orphan direction grounded in an additive tree-to-manifest sweep of tools/verify-served-tree.sh)"
+    reviewer: "fresh-context reviewer (general sub-agent), budget comparable to implementor; read artifacts and criteria reference directly"
+    findings:
+      - class: "gap analysis (absence sub-family): unchanged behavior the change puts at risk but no criterion preserves"
+        location: "R3 confinement clause vs the SC table"
+        ground: "no criterion observes 'edits confined to the image references' — SC-3's byte-diff is cross-surface, not pre-work-vs-post-work, so a stray editorial change propagated consistently to all surfaces passes every criterion; materially load-bearing in a data-only archive whose prior reconciliation of these same pages (CNT#13) made byte-preservation central"
+        remediation: "SC-8 added: per-touched-page pre-work-to-post-work comparison (base-commit blob vs post-work file, per touched surface), deltas shown reference-confined; Traceability states the operationalization"
+    adjudicated_preferences: "none"
+    structural_reevaluation: "none this round"
+    reviewer_disclosed_evidence_gaps: "none — reviewer independently re-verified the defect set, live probes, naming structure, surface identities, the gate script's actual behavior, manifest count, cross-referenced tickets, Zola sibling claims, and capture form"
+    loop_state: "FAIL round — one finding, remediated in place; re-validation round 3 follows"
