@@ -111,7 +111,11 @@ Captures for every check below sit under `.issues/14/research/` (dated
   `tools/verify-served-tree.sh` over the post-work tree: the script's existing
   manifest→tree check SHALL report 0 missing, and a tree→manifest orphan sweep
   added to it SHALL report 0 orphans — the extension is additive, leaving the
-  script's existing output and gate behavior unchanged.
+  script's existing output and gate behavior unchanged. The universe's stated
+  counts SHALL agree with the reconciled manifest wherever they are recorded
+  as fact: `docs/SERVED-TREE.md` and the `deploy/Dockerfile` bake-stage
+  comment both state the universe size and its composition, and SHALL be
+  updated to the reconciled counts when the universe changes.
 - **R5** — A reference-integrity instrument SHALL be committed in the repo's
   `tools/` family: it enumerates every `.png` reference in the served tree's
   HTML pages and reports each referenced-but-missing file with its referrer
@@ -136,8 +140,9 @@ Captures for every check below sit under `.issues/14/research/` (dated
 | SC-4 | The manifest gate holds post-work in both directions: `tools/verify-served-tree.sh` — with its additive tree→manifest orphan sweep — executed over the post-work tree reports 0 missing (manifest→tree) and 0 orphans (tree→manifest) against the manifest regenerated per R4 | structural | executed script capture showing both direction lines |
 | SC-5 | Dated captures of this work's executed evidence (audit, instrument runs, surface reconciliation, deploy probe) sit under `.issues/14/research/` in the standing probe-SOP family form (executing account in each capture header, marker-labeled sections) | structural | artifact existence + completeness parse |
 | SC-6 | One open PR against `master`; no agent merge | structural | `gh pr view` |
-| SC-7 | Post-redeploy, the live `/cnt` tree reflects the dispositions: restored/corrected references return 200 and accept-dispositioned references return 404, exactly as the disposition record states | behavioral | live HTTP probe capture of the affected reference paths, compared against the record |
+| SC-7 | Post-redeploy, the live `/cnt` tree reflects the dispositions per outcome: restored/replaced references are present in the served affected pages and return 200; dropped references are absent from the served affected pages; accepted references remain present and return 404 | behavioral | live capture — per-affected-page fetch (its served reference set) plus per-affected-path HTTP status, compared 1:1 against the disposition record |
 | SC-8 | Every chapter page the work edits carries a pre-work→post-work delta confined to the image references the disposition touches — no other byte of the page changes in any surface it lives in | structural | executed per-page pre/post comparison (base-commit blob vs post-work file, per touched surface) with deltas shown reference-confined, captured under `.issues/14/research/` |
+| SC-9 | When the universe changed, the universe's stated counts agree with the reconciled manifest: `docs/SERVED-TREE.md` and the `deploy/Dockerfile` bake-stage comment carry the reconciled size and composition (when the universe did not change, they already agree and the criterion is satisfied unchanged) | structural | artifact parse of the two stated-count surfaces against the manifest census |
 
 ## Approach
 
@@ -174,9 +179,11 @@ broken images), every inbound link to them, the dictionary suite's
 dead-reference sweep family (the cherokeedictionary#136 disposition surface),
 and any future diglot page regeneration (the disposition record as its
 reconciliation input). Blast radius: repo content files (HTML, PNG, tarball,
-manifest) plus one redeploy through the delivered tooling — no code paths, no
-devops-repo surfaces, no routing change. Rollback: revert the content commit
-and redeploy the prior pinned tag through the same tooling.
+manifest) and the universe's stated-count documentation
+(`docs/SERVED-TREE.md`, the `deploy/Dockerfile` bake-stage comment) when
+restores change the universe, plus one redeploy through the delivered tooling
+— no code paths, no devops-repo surfaces, no routing change. Rollback: revert
+the content commit and redeploy the prior pinned tag through the same tooling.
 
 ## Out of scope
 
@@ -201,9 +208,10 @@ findings and this session's verification — the 2026-11-07 exhaustive audit
 under `.issues/14/research/`. R1/R2 implement the disposition requirement
 verbatim; R3/R4 are the fix's reconciliation obligations toward the served
 tree and CNT#9's delivered gate — R4's tree→manifest sweep added to the gate
-script so the manifest reconciliation is evidenced rather than asserted, and
-R3's confinement clause operationalized by SC-8's pre/post comparison so the
-archive's page content is preserved, not merely propagated consistently; R5
+script so the manifest reconciliation is evidenced rather than asserted and
+the universe's stated counts kept agreeing (SC-9), and R3's confinement clause
+operationalized by SC-8's pre/post comparison so the archive's page content is
+preserved, not merely propagated consistently; R5
 commits the audit that found the defect as the standing instrument; R7 closes
 the loop to the surface the failure was observed on; R6 is the deck's PR
 boundary.

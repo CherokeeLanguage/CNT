@@ -34,3 +34,21 @@ spec:
     structural_reevaluation: "none this round"
     reviewer_disclosed_evidence_gaps: "none — reviewer independently re-verified the defect set, live probes, naming structure, surface identities, the gate script's actual behavior, manifest count, cross-referenced tickets, Zola sibling claims, and capture form"
     loop_state: "FAIL round — one finding, remediated in place; re-validation round 3 follows"
+  - round: 3
+    date: "20261107052631"
+    artifact: .issues/14/spec.md
+    artifact_revision: "store commit 4672f62d (round-2 revision: SC-8 pre/post confinement criterion added)"
+    reviewer: "fresh-context reviewer (general sub-agent), budget comparable to implementor; read artifacts and criteria reference directly"
+    findings:
+      - class: "incapable instrument (defect class 5) with a class-4 ambiguity on the same branch"
+        location: "SC-7"
+        ground: "for a drop disposition the live HTTP probe of the dropped path returns 404 identically whether or not the fix shipped, so a stale redeploy leaving the broken reference in the served page is invisible; the live reflection of a drop is a page-content fact requiring a fetch of the affected pages; 'restored/corrected references return 200' has no referent for the dropped branch"
+        remediation: "SC-7 revised: per-outcome branches stated explicitly (restored/replaced present+200, dropped absent from the served page, accepted present+404) and the instrument extended to fetch every affected page's served reference set alongside the per-path status probe, compared 1:1 against the disposition record"
+      - class: "blast radius (analysis family): documentation surfaces missing from the impact enumeration"
+        location: "Impact blast radius / R4"
+        ground: "docs/SERVED-TREE.md ('exactly the 8,553-entry served universe: 8,264 page scans… BB_.png (book-header images, 23 files)') and the deploy/Dockerfile bake-stage comment ('the full 8,553-file served universe') state the universe size as fixed fact; a restore disposition grows the universe and would ship stale counts; neither file is tool-generated"
+        remediation: "R4 extended with the artifacts-of-record agreement (docs/SERVED-TREE.md and the deploy/Dockerfile bake-stage comment updated to the reconciled counts when the universe changes); SC-9 added observing the agreement by artifact parse; Impact blast radius updated to name the documentation surfaces"
+    adjudicated_preferences: "none"
+    structural_reevaluation: "none this round"
+    reviewer_disclosed_evidence_gaps: "none — reviewer independently re-verified the audit enumeration (including reference-form exhaustiveness), live probes, surface byte-identity across all 288 pages, naming structure, dimensions, gate-script behavior and execution (8553/8553), manifest census (8,264+288+1), cross-referenced tickets, Zola claims, capture form, repo-boundary containment, and SC-8's base-commit blob availability"
+    loop_state: "FAIL round — two findings, remediated in place; re-validation round 4 follows"
