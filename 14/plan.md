@@ -290,8 +290,9 @@ convention.
 - HTML edits of any kind (D4 — the audit's references all resolve).
 - OCR model training, kraken model acquisition, or OCR-service work (the
   kraken 7.1.1 CLI and the Ollama OCR models at 192.168.1.163:11434 are
-  recorded in the issue's research store as available toolkit; no item
-  requires them — the copies' content verification is byte-identity).
+  recorded in the issue's research store as available toolkit —
+  `2026-11-07_toolkit-probe.md`; no item requires them — the copies'
+  content verification is byte-identity).
 - The superseded extraction-from-scan effort (locate/download a scanned
   1860 copy, kraken/OCR extraction) — resolved by the developer's
   copies-and-fixes direction of 2026-11-07; the research findings remain in
