@@ -47,33 +47,36 @@ body: "<!--\nSPDX-FileCopyrightText: 2026 Michael Conrad\nSPDX-License-Identifie
   \ 909×285). The four `BBCC00` scans exist in neither repo —\n  consistent with the\
   \ report's hypothesis that they were never generated.\n  Dimensional mismatches\
   \ between the Zola `NN_` copies and CNT's existing\n  `NN_` siblings (e.g. CNT `19_.png`\
-  \ 713×89, CNT `08_.png` 1233×125) leave\n  copy-equivalence unverified. This is\
-  \ a sibling defect in another\n  repository — out of scope here (single-repo scope\
-  \ rule), recorded for the\n  developer's disposition.\n- **CNT#13 (closed; PR #15\
-  \ merged 2026-11-07T04:31Z)** committed the\n  published tree at `cnt/` (8,553 files)\
-  \ and the in-webapp\n  `cnt/website.tar.gz`; the two tarball copies are byte-identical\
-  \ (md5\n  `e41315255fe967650fe61bc48ebef404`). #13's provenance question (whether\
-  \ the\n  `NNNN.html` pages are CNT-diglot-generated or hand-maintained) was recorded\n\
-  \  there without a delivered verdict; the committed pages are the working\n  surface\
-  \ either way.\n- **Served-truth topology:** the deployed image bakes the `website.tar.gz`\n\
-  \  extraction (CNT#11 R1), gated by CNT#9's manifest\n  (`tools/verify-served-tree.sh`,\
-  \ 8,553 files). Chapter-page content lives in\n  three reconciled surfaces: `cntdata/*.html`\
-  \ (working copies), `cnt/*.html`\n  (published-tree copies), and the tarball members.\
-  \ Redeploys swap the pinned\n  tag with no routing change (CNT#11 R3).\n\n## Scope\n\
-  \n- Disposition each of the 8 missing-file references using the report's stated\n\
-  \  outcomes — restore/regenerate the image, correct the page's reference\n  (drop/replace),\
-  \ or accept the broken reference with a recorded reason —\n  with the disposition\
-  \ (outcome + reason) recorded per reference.\n- Implemented dispositions propagate\
-  \ to every surface the served tree draws\n  from (`cntdata/`, `cnt/`, the tarball\
-  \ members), and the resolved state\n  reaches the live deployment through CNT#11's\
-  \ redeploy loop.\n- A committed reference-integrity instrument over the served chapter\
-  \ pages,\n  plus the dated execution captures.\n\n## Requirements\n\n- **R1** —\
-  \ A committed disposition record SHALL cover every\n  referenced-but-missing image\
-  \ reference in the served chapter pages (the\n  8 files / 23 references / 20 pages\
-  \ of the 2026-11-07 audit), assigning each\n  reference exactly one outcome — restore,\
-  \ correct, or accept — with a\n  recorded reason.\n- **R2** — Post-work, the only\
-  \ unresolved image references in the served\n  chapter pages SHALL be the accept-dispositioned\
-  \ ones (each carried with its\n  recorded reason); every restore-dispositioned reference\
+  \ 713×89, CNT `08_.png` 1233×125) stand as\n  recorded facts; developer direction\
+  \ 2026-11-07 accepts them by directing\n  the import (each strip a single distinct\
+  \ file — `07_.png` md5-identical\n  across its 17 copies, `18_`/`24_`/`25_` two\
+  \ copies each). The sibling's own\n  four `BBCC00` defects remain a sibling defect\
+  \ in another\n  repository — out of scope here (single-repo scope rule).\n- **CNT#13\
+  \ (closed; PR #15 merged 2026-11-07T04:31Z)** committed the\n  published tree at\
+  \ `cnt/` (8,553 files) and the in-webapp\n  `cnt/website.tar.gz`; the two tarball\
+  \ copies are byte-identical (md5\n  `e41315255fe967650fe61bc48ebef404`). #13's provenance\
+  \ question (whether the\n  `NNNN.html` pages are CNT-diglot-generated or hand-maintained)\
+  \ was recorded\n  there without a delivered verdict; the committed pages are the\
+  \ working\n  surface either way.\n- **Served-truth topology:** the deployed image\
+  \ bakes the `website.tar.gz`\n  extraction (CNT#11 R1), gated by CNT#9's manifest\n\
+  \  (`tools/verify-served-tree.sh`, 8,553 files). Chapter-page content lives in\n\
+  \  three reconciled surfaces: `cntdata/*.html` (working copies), `cnt/*.html`\n\
+  \  (published-tree copies), and the tarball members. Redeploys swap the pinned\n\
+  \  tag with no routing change (CNT#11 R3).\n\n## Scope\n\n- Disposition each of\
+  \ the 8 missing-file references using the report's stated\n  outcomes — restore/regenerate\
+  \ the image, correct the page's reference\n  (drop/replace), or accept the broken\
+  \ reference with a recorded reason —\n  with the disposition (outcome + reason)\
+  \ recorded per reference.\n- Implemented dispositions propagate to every surface\
+  \ the served tree draws\n  from (`cntdata/`, `cnt/`, the tarball members), and the\
+  \ resolved state\n  reaches the live deployment through CNT#11's redeploy loop.\n\
+  - A committed reference-integrity instrument over the served chapter pages,\n  plus\
+  \ the dated execution captures.\n\n## Requirements\n\n- **R1** — A committed disposition\
+  \ record SHALL cover every\n  referenced-but-missing image reference in the served\
+  \ chapter pages (the\n  8 files / 23 references / 20 pages of the 2026-11-07 audit),\
+  \ assigning each\n  reference exactly one outcome — restore, correct, or accept\
+  \ — with a\n  recorded reason.\n- **R2** — Post-work, the only unresolved image\
+  \ references in the served\n  chapter pages SHALL be the accept-dispositioned ones\
+  \ (each carried with its\n  recorded reason); every restore-dispositioned reference\
   \ SHALL have its image\n  present at the referenced path in the served tree, and\
   \ every\n  correct-dispositioned reference SHALL have its referencing page carrying\
   \ a\n  resolvable or removed reference.\n- **R3** — Content changes SHALL land on\
@@ -152,27 +155,29 @@ body: "<!--\nSPDX-FileCopyrightText: 2026 Michael Conrad\nSPDX-License-Identifie
   \ no orphan direction from this change\n  and keeps passing because the manifest\
   \ and the tarball are regenerated\n  together; the pre-build both-direction check\
   \ is what evidences the\n  reconciliation.\n- **Per-reference disposition** is decided\
-  \ at implementation from the\n  recorded outcomes, with the investigation paths\
-  \ the report names: the four\n  `NN_` strips have a candidate source (the CherokeeNewTestament.org\n\
-  \  co-located copies — equivalence verified before adoption, since dimensions\n\
-  \  differ from CNT's existing `NN_` siblings); the four single-chapter\n  `BBCC00`\
-  \ scans exist nowhere, so restore means regeneration from the source\n  scans or\
-  \ the diglot artwork pipeline, with correct/accept as the report's\n  fallbacks.\
-  \ The disposition record is where each decision lands with its\n  reason.\n- **Propagation**\
-  \ follows the existing reconcile-and-redeploy loop: content\n  lands on all surfaces,\
-  \ the tarball regenerates if members change, the\n  manifest regenerates if the\
-  \ universe changes, and a redeploy at a new\n  pinned tag (CNT#11's tooling, no\
-  \ routing change) carries the state live;\n  SC-7's probe closes the loop.\n\n##\
-  \ Impact\n\nConsumers: the twenty affected `/cnt` chapter pages (currently rendering\n\
-  broken images), every inbound link to them, the dictionary suite's\ndead-reference\
-  \ sweep family (the cherokeedictionary#136 disposition surface),\nand any future\
-  \ diglot page regeneration (the disposition record as its\nreconciliation input).\
-  \ Blast radius: repo content files (HTML, PNG, tarball,\nmanifest) and the universe's\
-  \ stated-count documentation\n(`docs/SERVED-TREE.md`, the `deploy/Dockerfile` bake-stage\
-  \ comment) when\nrestores change the universe, plus one redeploy through the delivered\
-  \ tooling\n— no code paths, no devops-repo surfaces, no routing change. Rollback:\
-  \ revert\nthe content commit and redeploy the prior pinned tag through the same\
-  \ tooling.\n\n## Out of scope\n\n- The CherokeeNewTestament.org Zola repository's\
+  \ at implementation from the\n  recorded outcomes. Developer direction 2026-11-07\
+  \ fixes the restore source\n  for the four `NN_` strips: import from the sibling\
+  \ project\n  (CherokeeNewTestament.org), which holds each strip as a single distinct\n\
+  \  file (`07_.png` md5-identical across its 17 copies; `18_`/`24_`/`25_` two\n \
+  \ copies each); the strips' dimensions differ from CNT's existing `NN_`\n  siblings\
+  \ — a known, accepted consequence of the directed import. The four\n  single-chapter\
+  \ `BBCC00` scans exist in neither repo, so restore there means\n  regeneration from\
+  \ the source scans or the diglot artwork pipeline, with\n  correct/accept as the\
+  \ report's fallbacks. The disposition record is where\n  each decision lands with\
+  \ its reason.\n- **Propagation** follows the existing reconcile-and-redeploy loop:\
+  \ content\n  lands on all surfaces, the tarball regenerates if members change, the\n\
+  \  manifest regenerates if the universe changes, and a redeploy at a new\n  pinned\
+  \ tag (CNT#11's tooling, no routing change) carries the state live;\n  SC-7's probe\
+  \ closes the loop.\n\n## Impact\n\nConsumers: the twenty affected `/cnt` chapter\
+  \ pages (currently rendering\nbroken images), every inbound link to them, the dictionary\
+  \ suite's\ndead-reference sweep family (the cherokeedictionary#136 disposition surface),\n\
+  and any future diglot page regeneration (the disposition record as its\nreconciliation\
+  \ input). Blast radius: repo content files (HTML, PNG, tarball,\nmanifest) and the\
+  \ universe's stated-count documentation\n(`docs/SERVED-TREE.md`, the `deploy/Dockerfile`\
+  \ bake-stage comment) when\nrestores change the universe, plus one redeploy through\
+  \ the delivered tooling\n— no code paths, no devops-repo surfaces, no routing change.\
+  \ Rollback: revert\nthe content commit and redeploy the prior pinned tag through\
+  \ the same tooling.\n\n## Out of scope\n\n- The CherokeeNewTestament.org Zola repository's\
   \ identical four `BBCC00`\n  defects — separate repository, separate issue store\
   \ (single-repo scope\n  rule); recorded in Facts as a sibling observation for the\
   \ developer's\n  disposition.\n- CNT-diglot pipeline changes or wholesale page regeneration\
@@ -183,9 +188,12 @@ body: "<!--\nSPDX-FileCopyrightText: 2026 Michael Conrad\nSPDX-License-Identifie
   \ (this record's\npre-conversion body, 2026-11-06): \"Disposition each of the 8\
   \ references:\nregenerate/scan the missing image, or correct the page's reference\n\
   (drop/replace), or accept the broken image with a recorded reason,\" plus its\n\
-  CNT#13 coordination note. The observed failures are the report's crawl\nfindings\
-  \ and this session's verification — the 2026-11-07 exhaustive audit\n(8 files /\
-  \ 23 references / 20 pages) and the live spot-check, both captured\nunder `.issues/14/research/`.\
+  CNT#13 coordination note; developer direction 2026-11-07 fixes the restore\nsource\
+  \ for the four `NN_` strips — import from the sibling project where it\nholds the\
+  \ file (verified: it holds all four strips, none of the four\n`BBCC00` scans; capture\
+  \ under `.issues/14/research/`). The observed failures\nare the report's crawl\n\
+  findings and this session's verification — the 2026-11-07 exhaustive audit\n(8 files\
+  \ / 23 references / 20 pages) and the live spot-check, both captured\nunder `.issues/14/research/`.\
   \ R1/R2 implement the disposition requirement\nverbatim; R3/R4 are the fix's reconciliation\
   \ obligations toward the served\ntree and CNT#9's delivered gate — R4's tree→manifest\
   \ sweep added to the gate\nscript so the manifest reconciliation is evidenced rather\
@@ -198,6 +206,6 @@ body: "<!--\nSPDX-FileCopyrightText: 2026 Michael Conrad\nSPDX-License-Identifie
   \nFull spec and artifacts (AI-facing): `.issues/14/`\n\n\U0001F916 Co-authored with\
   \ AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)\n"
 created_at: '2026-11-07T04:53:12+00:00'
-updated_at: '2026-11-07T05:42:28+00:00'
+updated_at: '2026-11-07T15:36:05+00:00'
 phase: spec
 github_url: https://github.com/CherokeeLanguage/CNT/issues/14

@@ -57,10 +57,12 @@ Captures for every check below sit under `.issues/14/research/` (dated
   `24_.png` 909×285). The four `BBCC00` scans exist in neither repo —
   consistent with the report's hypothesis that they were never generated.
   Dimensional mismatches between the Zola `NN_` copies and CNT's existing
-  `NN_` siblings (e.g. CNT `19_.png` 713×89, CNT `08_.png` 1233×125) leave
-  copy-equivalence unverified. This is a sibling defect in another
-  repository — out of scope here (single-repo scope rule), recorded for the
-  developer's disposition.
+  `NN_` siblings (e.g. CNT `19_.png` 713×89, CNT `08_.png` 1233×125) stand as
+  recorded facts; developer direction 2026-11-07 accepts them by directing
+  the import (each strip a single distinct file — `07_.png` md5-identical
+  across its 17 copies, `18_`/`24_`/`25_` two copies each). The sibling's own
+  four `BBCC00` defects remain a sibling defect in another
+  repository — out of scope here (single-repo scope rule).
 - **CNT#13 (closed; PR #15 merged 2026-11-07T04:31Z)** committed the
   published tree at `cnt/` (8,553 files) and the in-webapp
   `cnt/website.tar.gz`; the two tarball copies are byte-identical (md5
@@ -162,14 +164,16 @@ Captures for every check below sit under `.issues/14/research/` (dated
   together; the pre-build both-direction check is what evidences the
   reconciliation.
 - **Per-reference disposition** is decided at implementation from the
-  recorded outcomes, with the investigation paths the report names: the four
-  `NN_` strips have a candidate source (the CherokeeNewTestament.org
-  co-located copies — equivalence verified before adoption, since dimensions
-  differ from CNT's existing `NN_` siblings); the four single-chapter
-  `BBCC00` scans exist nowhere, so restore means regeneration from the source
-  scans or the diglot artwork pipeline, with correct/accept as the report's
-  fallbacks. The disposition record is where each decision lands with its
-  reason.
+  recorded outcomes. Developer direction 2026-11-07 fixes the restore source
+  for the four `NN_` strips: import from the sibling project
+  (CherokeeNewTestament.org), which holds each strip as a single distinct
+  file (`07_.png` md5-identical across its 17 copies; `18_`/`24_`/`25_` two
+  copies each); the strips' dimensions differ from CNT's existing `NN_`
+  siblings — a known, accepted consequence of the directed import. The four
+  single-chapter `BBCC00` scans exist in neither repo, so restore there means
+  regeneration from the source scans or the diglot artwork pipeline, with
+  correct/accept as the report's fallbacks. The disposition record is where
+  each decision lands with its reason.
 - **Propagation** follows the existing reconcile-and-redeploy loop: content
   lands on all surfaces, the tarball regenerates if members change, the
   manifest regenerates if the universe changes, and a redeploy at a new
@@ -206,7 +210,11 @@ The requirement source is the developer's report (this record's
 pre-conversion body, 2026-11-06): "Disposition each of the 8 references:
 regenerate/scan the missing image, or correct the page's reference
 (drop/replace), or accept the broken image with a recorded reason," plus its
-CNT#13 coordination note. The observed failures are the report's crawl
+CNT#13 coordination note; developer direction 2026-11-07 fixes the restore
+source for the four `NN_` strips — import from the sibling project where it
+holds the file (verified: it holds all four strips, none of the four
+`BBCC00` scans; capture under `.issues/14/research/`). The observed failures
+are the report's crawl
 findings and this session's verification — the 2026-11-07 exhaustive audit
 (8 files / 23 references / 20 pages) and the live spot-check, both captured
 under `.issues/14/research/`. R1/R2 implement the disposition requirement
