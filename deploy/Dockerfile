@@ -2,7 +2,7 @@
 #
 # Bakes the served /cnt tree from this repository's tracked bytes: the
 # members of cntdata/website.tar.gz extracted flat at the tree root plus the
-# tarball itself at the root — the full 8,553-file served universe of
+# tarball itself at the root — the full 8,561-file served universe of
 # cntdata/served-tree-manifest.md5 — served over internal HTTP :80 by the
 # stack's pinned file-server image (caddy:2.11.7; no TLS — the edge proxy
 # terminates; no published port; no env; no volumes; no secrets).
