@@ -174,3 +174,10 @@ plan_validation:
     structural_reevaluation: "none this round"
     reviewer_disclosed_evidence_gaps: "cnt/website.tar.gz absent from the stale local checkout but confirmed in origin/master's tree (blob verified) — session hygiene at branch time"
     loop_state: "zero-finding terminal round — plan validation converged at round 4; implement consumes the plan under the terminal-stage approval"
+implementation_verify:
+  - round: 1
+    date: "20261108014300"
+    artifact: "feature/CNT-14-image-dispositions (deliverables: docs/image-reference-dispositions.md; tools/check-image-refs.sh; tools/verify-served-tree.sh orphan sweep; 8 PNGs; both website.tar.gz twins; cntdata/served-tree-manifest.md5; docs/SERVED-TREE.md; deploy/Dockerfile; deploy/deployment-record.txt)"
+    reviewer: "fresh-context reviewer (general sub-agent), budget comparable to implementor; read spec/plan/SCs, the full diff, and the executed captures directly"
+    findings: "round 1 FAIL (one finding: a stale present-tense count in docs/SERVED-TREE.md's Verification section); remediated in place"
+    loop_state: "converged — round 2 PASS with zero findings; verdict recorded once in the PR body per the verify card"
