@@ -28,3 +28,18 @@ spec:
       Zero findings on the revised artifact; containment both prongs pass;
       SC-3's pending-work form adjudicated state-decidable. Loop exits clean.
 
+plan:
+  - round: 1
+    date: 2026-11-09
+    reviewer: fresh-context subagent (session ses_e3daaf760ffeaGfDXoDUmTCnHb)
+    verdict: FAIL
+    findings:
+      - class: status-tracking-in-body
+        location: plan.md line 3
+        finding: plan body carried a copy of the spec's round-2 verdict (second copy of the verdict inside the artifact).
+        remediation: parenthetical dropped in place; verdict lives solely in this record.
+  - round: 2
+    date: 2026-11-09
+    reviewer: fresh-context subagent (session ses_e3daa2b2fffeNoVfamLDoojEX5)
+    verdict: PASS
+    findings: []
