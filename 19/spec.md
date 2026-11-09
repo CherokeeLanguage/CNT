@@ -50,8 +50,8 @@ No script change in this ticket; the deploy-script integration question is R-3's
 
 ## Done state
 
-SC-1…SC-3 all green; the executed rehearsal capture recorded on the issue.
+SC-1…SC-3 all green; the continuity capture from the first SoP-executed redeploy recorded on the issue (until that redeploy, SC-3 is pending work).
 
 ## Consumers / blast radius
 
-cnt-web operators and future redeploys (the recreate gap on the `/cnt` route is retired); the org runbook consumes this section as the cnt instance of the pattern. Blast radius: one documentation file in this repo; the rehearsal touches only the dev-host replica (or the flip window of an already-planned redeploy).
+cnt-web operators and future redeploys (the recreate gap on the `/cnt` route is retired); the org runbook consumes this section as the cnt instance of the pattern. Blast radius: one documentation file in this repo; the evidence event is the flip window of an executed redeploy — no separate rehearsal surface exists or is created by this ticket.
