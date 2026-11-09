@@ -1,0 +1,30 @@
+spec:
+  - round: 1
+    date: 2026-11-09
+    reviewer: fresh-context subagent (session ses_e3dbdf2d4ffdOq2lfMUg3Vb7k8)
+    verdict: FAIL
+    findings:
+      - class: fabricated-claims (analysis family; secondary: feasibility, gap-analysis)
+        location: Consumers / blast radius (last sentence); inherited by Done state
+        finding: >
+          The spec asserted a dev-host replica (vhost-175) as an existing rehearsal
+          surface for the cnt-web switchover; no grounding artifact records any
+          cnt-web serving surface (Caddy edge or compose slot) on the dev host —
+          the devops#32 "staged replica on the dev box" is a legacy content-tree
+          replica, not a running serving stack.
+        classification: finding
+        remediation: >
+          Removed the phantom rehearsal surface everywhere it appeared (blast
+          radius and Done state revised in place). SC-3's instrument was already
+          pinned to the decidable event — the first SoP-executed redeploy carries
+          the continuity capture, pending work until then. Remote body reconciled
+          in the same action (gh issue edit 19).
+  - round: 2
+    date: 2026-11-09
+    reviewer: fresh-context subagent (session ses_e3db80418ffe1028K7kZSPppsx)
+    verdict: PASS
+    findings: []
+    notes: >
+      Zero findings on the revised artifact; containment both prongs pass;
+      SC-3's pending-work form adjudicated state-decidable. Loop exits clean.
+
