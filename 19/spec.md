@@ -1,16 +1,16 @@
 # Spec — cnt-web switchover SoP: zero-connection-loss image replacement behind Caddy
 
-> Ticket CNT#19. The org-level SoP is cherokeelanguage-devops#N (sibling ticket). This ticket puts the cnt-web container's own switchover procedure in this repository's SOP.md, conforming to the org runbook.
+> Ticket CNT#19. The org-level SoP is cherokeelanguage-devops#42 (sibling ticket). This ticket puts the cnt-web container's own switchover procedure in this repository's SOP.md, conforming to the org runbook.
 
 ## Problem
 
-`deploy/deploy-cnt-web.sh`'s redeploy path repoints the slot's image line and brings the service up — the `cnt` container is recreated in place, so the `/cnt` upstream is down for the recreate window (short for a static image, but nonzero: the old container stops before the new one binds). The org SoP (devops#N) makes zero-connection-loss switchover the standard for every container on the stack, with the blue-green sequence as the app-container class's procedure.
+`deploy/deploy-cnt-web.sh`'s redeploy path repoints the slot's image line and brings the service up — the `cnt` container is recreated in place, so the `/cnt` upstream is down for the recreate window (short for a static image, but nonzero: the old container stops before the new one binds). The org SoP (devops#42) makes zero-connection-loss switchover the standard for every container on the stack, with the blue-green sequence as the app-container class's procedure.
 
 Developer directive (2026-11-09, to all container repos): the switchover-without-connection-issues procedure becomes SoP here too — "this needs to be a rule for *ALL* containers", with the goal shape stated as the executed blue-green sequence ("At no point is there a moment without a healthy upstream behind Caddy").
 
 ## Decision
 
-**SOP.md gains the cnt-web switchover section** — the blue-green sequence adapted to the static image class, conforming to the org runbook (devops#N).
+**SOP.md gains the cnt-web switchover section** — the blue-green sequence adapted to the static image class, conforming to the org runbook (devops#42).
 
 ## Developer statements (traceability base)
 
@@ -39,7 +39,7 @@ No script change in this ticket; the deploy-script integration question is R-3's
 
 ## Out of scope
 
-- The org runbook's content (devops#N's deliverable — this section conforms to it and names it).
+- The org runbook's content (devops#42's deliverable — this section conforms to it and names it).
 - Making `deploy-cnt-web.sh` execute the blue-green sequence natively — open item for this ticket's plan.
 - The other containers' procedures (their own repos or the org runbook).
 - Route activation for a *first* deploy (rides the update window per CNT#11/#29 — unchanged).
