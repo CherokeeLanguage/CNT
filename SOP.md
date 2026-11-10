@@ -29,6 +29,34 @@ dated deployment record to `deploy/deployment-record.txt`. No env
 delivery, no secrets, no volume mounts — the tree is baked into the
 image. The tracked tree is the published state (reconciled in CNT#13).
 
+## Container checks (pre-flight/post-flight) (2026-11-10, CNT#23)
+
+Standing check on the vhost-58 serving stack — before **and** after every
+deploy and container-work step, by agent and operator alike (the devops#54
+empty-200 response; check definitions live once in the devops master —
+linked, never copied: cherokeelanguage-devops
+`docs/runbooks/container-sop-checks.md`, spec cherokeelanguage-devops#56).
+
+- **When (this repo's deploy flow):** pre-flight — the check
+  (`bash container-sop-checks.sh`, run on the host from the devops checkout)
+  exits 0
+  **before any deploy step** in this repo's flow: `deploy/deploy-cnt-web.sh`,
+  any step of the switchover SoP below, any container work on this stack.
+  Post-flight — the check re-runs **after the step**; the work is not done
+  until it exits 0 again.
+- **Gate semantics:** the script is a read-only sweep (inventory Up, body-level
+  route checks, backend role, mirror correlation) whose exit code is the gate:
+  exit 0 to proceed; a nonzero exit halts the work.
+- **Capture-with-work:** both runs' executed output is recorded with the work —
+  alongside the dated `deploy/deployment-record.txt` line (and in the driving
+  issue's `research/` artifacts).
+- **Inventory (this repo's slice of the stack):** the **`cnt`** static file
+  server (image `cnt-web:<commit>` baked from this tree, no env, no volumes)
+  behind the **`/cnt/`** route — with its legacy **`/cnt`** 302 — on
+  cherokeedictionary.net; the master's body-level sweep covers it
+  (200 + non-empty in the Cherokee New Testament family: a 200 with an empty
+  body is DOWN as users experience it).
+
 ## Switchover (blue-green, zero connection loss) — SoP (2026-11-09, CNT#19)
 
 Every cnt-web redeploy runs the blue-green switchover: at no point is there a
