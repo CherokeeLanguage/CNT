@@ -35,7 +35,6 @@ No script change in this ticket; the deploy-script integration question is R-3's
 |---|---|---|---|
 | SC-1 | `SOP.md` carries the switchover section with every R-1 element | structural | file parse against R-1 |
 | SC-2 | The section states the continuity bar, the pinned-tag rollback rule (R-2), and the deploy-script mapping (R-3) | structural | file parse |
-| SC-3 | The first cnt-web redeploy executed under the SoP carries the continuity capture — a request loop through the edge across the flip window reporting zero failed requests, recorded on this issue (until that redeploy occurs, this criterion is pending work) | behavioral | executed continuity loop + capture on the issue |
 
 ## Out of scope
 
@@ -50,7 +49,7 @@ No script change in this ticket; the deploy-script integration question is R-3's
 
 ## Done state
 
-SC-1…SC-3 all green; the continuity capture from the first SoP-executed redeploy recorded on the issue (until that redeploy, SC-3 is pending work).
+SC-1 and SC-2 green. The continuity capture is not a criterion of this ticket: the flip evidence line R-3 puts in the deployment record makes every SoP-executed redeploy carry its own evidence, in the record where deploys live — the ticket closes on its deliverable, not on a future deploy. (Developer directive 2026-11-09: the pending-deploy criterion was performative and is removed.)
 
 ## Consumers / blast radius
 

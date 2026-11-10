@@ -43,3 +43,13 @@ plan:
     reviewer: fresh-context subagent (session ses_e3daa2b2fffeNoVfamLDoojEX5)
     verdict: PASS
     findings: []
+  - round: 3
+    date: 2026-11-09
+    reviewer: fresh-context subagent (session ses_e3d977e8fffedlfPe0aI4t07LH)
+    verdict: PASS
+    findings: []
+    notes: >
+      Revision: SC-3 removed on explicit developer directive (performative —
+      closure gated on a future prod deploy). Standing evidence obligation
+      lives in R-3's flip-evidence-line requirement, implemented by the merged
+      SOP section. Zero findings; done state now SC-1/SC-2.
