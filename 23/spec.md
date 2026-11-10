@@ -1,0 +1,26 @@
+# Spec — standing pre-flight/post-flight container-check gate in this repo's deploy SoP
+
+Source: CherokeeLanguage/CNT#23 (approved; sibling of cherokeelanguage-devops#56).
+
+## Problem
+
+cherokeelanguage-devops#56 filed the standing pre-flight/post-flight container-check SoP in the devops repo (the response to the devops#54 empty-200 outage): every deploy/container-work step runs the check before and after — Caddy-routed routes verified **body-level** (200 + non-empty in the expected family; status-only checks read green during the 3.5 h outage), container inventory Up, non-routed containers role-checked (MariaDB backend connect), caddy access-log mirror correlated.
+
+## Requirements
+
+- **R-1 (SHALL):** this repo's deploy SoP carries the two-phase check contract — stating **when** the check runs in this repo's deploy flow (pre-flight exit-0 gate before any deploy step, post-flight re-run after it, both captures recorded with the work) — and links the devops master page rather than restating the definitions.
+- **R-2 (SHALL):** the SoP names this repo's container/route inventory on the shared stack: the `cnt` static file server behind the `/cnt` route (with its legacy 302) on cherokeedictionary.net.
+
+## Success criteria
+
+- **SC-1 (structural):** the repo's deploy SoP states the two-phase gate (when it runs, exit-0 gate semantics, capture-with-work) and links the master — direct content read.
+- **SC-2 (structural):** the inventory (R-2) is stated and agrees with the live stack — content read + live comparison at implementation time.
+
+## Out of scope
+
+- Modifying the check definitions (they live once, in the devops master — linked, never copied).
+- Container/deploy procedure changes beyond adding the check gate statement to the SoP.
+
+## Master
+
+The check definitions and the executed-check instrument: https://github.com/CherokeeLanguage/cherokeelanguage-devops/blob/main/docs/runbooks/container-sop-checks.md (devops repo; spec cherokeelanguage-devops#56).
