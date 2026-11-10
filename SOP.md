@@ -79,4 +79,18 @@ the switchover's flip evidence line to the dated deployment record:
 flip-out and flip-back timestamps and the continuity loop's result (zero
 failed requests).
 
+## Logging (2026-11-10, devops#48)
+
+- **Log mirror:** `/var/log/containers/cnt/current.log` on vhost-58 — the
+  `vector` stream shipper (cherokeelanguage-devops#48) captures the
+  container's stdout/stderr verbatim, one event per line; the mirror
+  persists across container recreation and daily rotation (30-day history,
+  dated copies).
+- **Contract:** console-first — stdout/stderr stream capture needs no
+  per-repo configuration; a future file-based log instrument must mount
+  under the `/var/log/containers/` tree to inherit the rotation.
+- **Runbook of record:** cherokeelanguage-devops
+  `docs/runbooks/logging-vhost-58.md` (cherokeelanguage-devops#48) —
+  deploy, probe, and rollback live there.
+
 🤖 Co-authored with AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)
